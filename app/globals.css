@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Inter:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  @apply bg-cream-50 text-charcoal;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Selection */
+::selection {
+  @apply bg-gold-300 text-chocolate-950;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold-400 rounded-lg;
+  transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-500;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-color: #C9A84C #F5EFE6;
+  scrollbar-width: thin;
+}
+
+/* Utility animations */
+@layer components {
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-up {
+    @apply animate-slide-up;
+  }
+
+  .luxury-hover {
+    @apply transition-all duration-300 ease-out cursor-pointer;
+
+    &:hover {
+      @apply -translate-y-0.5 shadow-luxury;
+    }
+  }
+
+  /* Typography utilities */
+  .heading-lg {
+    @apply text-4xl sm:text-5xl font-serif font-semibold leading-tight text-chocolate-950;
+  }
+
+  .heading-md {
+    @apply text-3xl sm:text-4xl font-serif font-semibold text-chocolate-950;
+  }
+
+  .heading-sm {
+    @apply text-2xl sm:text-3xl font-serif font-medium text-chocolate-950;
+  }
+
+  .body-lg {
+    @apply text-lg leading-relaxed text-charcoal;
+  }
+
+  .body-base {
+    @apply text-base leading-relaxed text-charcoal;
+  }
+
+  .body-sm {
+    @apply text-sm leading-relaxed text-charcoal;
+  }
+
+  /* Buttons and interactions */
+  .btn-base {
+    @apply px-lg py-md font-sans font-medium rounded-md transition-all duration-300 ease-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-gold-400 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-chocolate-900 text-cream-50 hover:bg-chocolate-800 hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-gold-400 text-chocolate-950 hover:bg-gold-500 hover:shadow-md;
+  }
+
+  .btn-outline {
+    @apply btn-base border border-charcoal text-charcoal hover:bg-charcoal hover:text-cream-50;
+  }
+
+  /* Container */
+  .container-luxury {
+    @apply max-w-7xl mx-auto px-lg sm:px-xl md:px-2xl;
+  }
+
+  /* Gradient text */
+  .gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 to-gold-500 bg-clip-text text-transparent;
+  }
+
+  /* Glass morphism */
+  .glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 rounded-lg;
+  }
+
+  /* Divider */
+  .divider-gold {
+    @apply h-px bg-gradient-to-r from-transparent via-gold-400 to-transparent;
+  }
+}
+
+/* Smooth transitions */
+a,
+button {
+  @apply transition-colors duration-200;
+}
+
+/* Focus visible states */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-gold-400;
+}

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MIVA Çikolata | Tek Sayfa</title>
+  <meta
+    name="description"
+    content="MIVA Çikolata - Premium el yapımı çikolata. Geleneksel sanat ve modern lüksün buluştuğu tek sayfa deneyim."
+  />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <style>
+    :root {
+      --bg: #f7f1e8;
+      --text: #1b1a17;
+      --accent: #7b4c35;
+      --muted: #5e5048;
+      --surface: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 100%);
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      padding: 3rem 0;
+      text-align: center;
+    }
+
+    .hero {
+      padding: 4rem 0;
+      background: linear-gradient(180deg, rgba(15, 9, 5, 0.95), rgba(15, 9, 5, 0)) var(--bg);
+    }
+
+    h1 {
+      font-size: min(3.4rem, clamp(2.5rem, 5vw, 4rem));
+      margin: 0 0 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    p.lead {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+      margin-bottom: 1rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 24px;
+      padding: 1.8rem;
+      box-shadow: 0 16px 40px rgba(15, 9, 5, 0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .button:hover {
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 3rem 0;
+      }
+
+      .container {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p style="text-transform: uppercase; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 1rem; font-weight: 700;">
+        MIVA Çikolata
+      </p>
+      <h1>El yapımı çikolatanın mimari inceliği</h1>
+      <p class="lead">
+        1950’lerin geleneğini modern dokunuşla birleştiren, seçkin çikolata lezzetlerinin yer aldığı özel bir tek sayfa deneyimi.
+      </p>
+      <a href="#contact" class="button">Sipariş ve iletişim</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="section-title">Öne çıkan tatlar</div>
+      <div class="cards">
+        <article class="card">
+          <h3>Damla Çikolata</h3>
+          <p>Zengin kakao aroması ve ince doku arayanlar için klasik bir imza lezzet.</p>
+        </article>
+        <article class="card">
+          <h3>Drajeler</h3>
+          <p>Renkli, pralin dolgulu drajeler ile her anınıza şıklık katın.</p>
+        </article>
+        <article class="card">
+          <h3>Special</h3>
+          <p>Özel günlere özel kutular ve kişiye özel tat kombinasyonları.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" style="background: rgba(255, 255, 255, 0.72); border-radius: 32px;">
+      <div class="section-title">Üretim felsefemiz</div>
+      <p>
+        Her parça çikolata, ustalıkla seçilen kakao çekirdekleri ve mevsimsel malzemelerle hazırlanır. Sanat, kalite ve sürdürülebilirlik her dilimde hissedilir.
+      </p>
+      <ul style="margin-top: 1.25rem; padding-left: 1.25rem; color: var(--muted);">
+        <li>El yapımı küçük parti üretim</li>
+        <li>Doğal içerikler, katkısız tarifler</li>
+        <li>Seçkin ve şık bir çikolata deneyimi</li>
+      </ul>
+    </section>
+
+    <section class="container">
+      <div class="section-title">Ne sunuyoruz?</div>
+      <div class="cards">
+        <article class="card">
+          <h3>Kurumsal hediye</h3>
+          <p>Markanız için seçkin hediye kutuları ve özel sunum seçenekleri.</p>
+        </article>
+        <article class="card">
+          <h3>Özel sipariş</h3>
+          <p>Düğün, davet ve kişiye özel etkinlikler için tatlar ve tasarımlar.</p>
+        </article>
+        <article class="card">
+          <h3>Mağaza & teslimat</h3>
+          <p>İstanbul içi hızlı teslimat ve seçkin mağaza deneyimi.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="container" id="contact">
+      <div class="section-title">İletişim</div>
+      <p>Bir teklif almak veya sipariş vermek için aşağıdaki bilgilerle bize ulaşın.</p>
+      <p style="margin: 0.75rem 0;"><strong>Email:</strong> info@miva-cikolata.com</p>
+      <p style="margin: 0.75rem 0;"><strong>Telefon:</strong> +90 212 000 00 00</p>
+      <p style="margin: 0.75rem 0;"><strong>Adres:</strong> İstanbul, Türkiye</p>
+    </section>
+  </main>
+
+  <footer class="container">
+    <p>© 2026 MIVA Çikolata. Mimari tatların evinizdeki sunumu.</p>
+  </footer>
+</body>
+</html>
