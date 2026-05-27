@@ -25,10 +25,10 @@ export const SOCIAL_LINKS = [
 export const FEATURED_PRODUCTS = [
   {
     id: 1,
-    category: 'SPECIAL',
-    name: 'Special Edisyon',
+    category: 'Draje',
+    name: 'Fındık Draje',
     description: 'Sınırlı üretim, el seçilmiş kakao çekirdekleri ve özel marinasyon tekniği ile hazırlanmış mahir eseri.',
-    image: '/images/special-couverture.png',
+    image: '/images/drajeler/screen copy 2.png',
   },
   {
     id: 2,

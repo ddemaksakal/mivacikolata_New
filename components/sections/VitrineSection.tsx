@@ -141,7 +141,7 @@ export function VitrineSection() {
           transition={{ delay: 0.6 }}
           className="flex justify-center mt-4xl pt-2xl"
         >
-          <a href="/products" className="inline-block">
+          <a href="/urunler" className="inline-block">
             <Button
               variant="outline"
               size="lg"
