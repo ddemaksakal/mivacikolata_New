@@ -64,7 +64,11 @@ body {
     }
   }
 
-  /* Typography utilities */
+  /* Typography utilities - Design System */
+  .text-label-caps {
+    @apply text-xs font-semibold tracking-widest uppercase;
+  }
+
   .heading-lg {
     @apply text-4xl sm:text-5xl font-serif font-semibold leading-tight text-chocolate-950;
   }
