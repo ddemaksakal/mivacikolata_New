@@ -1,11 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Product } from '@/lib/products';
-import { Badge } from '@/components/ui/Badge';
-import { ProductImagePlaceholder } from '@/components/products/ProductImagePlaceholder';
+import type { Product } from '@/lib/products';
 
 interface ProductCardProps {
   product: Product;
@@ -13,17 +10,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
-  const [imageError, setImageError] = useState(false);
-
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        ease: 'easeOut',
-      },
+      transition: { duration: 0.4, delay: (index || 0) * 0.05 },
     },
   };
 
@@ -31,69 +23,39 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     <motion.div
       variants={cardVariants}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ delay: index * 0.05 }}
-      className="group flex flex-col h-full"
+      animate="visible"
+      className="group"
     >
-      {/* Product Image Container */}
-      <div className="relative overflow-hidden rounded-lg shadow-sm transition-all duration-300 group-hover:shadow-lg mb-lg">
-        <div className="relative aspect-square bg-cream-50 overflow-hidden">
-          {!imageError ? (
-            <>
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                priority={index < 4}
-                onError={() => setImageError(true)}
-              />
-
-              {/* Overlay on Hover */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.3 }}
-                className="absolute inset-0 bg-black/5 pointer-events-none"
-              />
-            </>
-          ) : (
-            <ProductImagePlaceholder category={product.category} />
-          )}
-        </div>
-      </div>
-
-      {/* Product Info */}
-      <div className="flex flex-col flex-grow space-y-sm">
-        {/* Badge */}
-        <div className="flex items-start justify-between gap-sm">
-          <Badge label={product.badge} variant="gold" size="sm" />
+      <div className="bg-white border border-hairline-border hover:border-champagne-gold transition-all duration-500 overflow-hidden">
+        {/* Image Container */}
+        <div className="relative aspect-square overflow-hidden bg-surface">
+          <motion.div
+            className="w-full h-full"
+            whileHover={{ scale: 1.04 }}
+            transition={{ duration: 0.7 }}
+          >
+            <img
+              src={product.image}
+              alt={product.name}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </div>
 
-        {/* Product Name */}
-        <h3 className="text-base md:text-lg font-serif font-light text-chocolate-950 leading-snug line-clamp-2">
-          {product.name}
-        </h3>
+        {/* Content */}
+        <div className="p-6 flex flex-col">
+          {/* Badge */}
+          <span className="text-label-caps text-champagne-gold mb-3">{product.badge}</span>
 
-        {/* Short Description */}
-        <p className="text-xs font-sans text-gray-600 leading-relaxed line-clamp-2 flex-grow">
-          {product.shortDescription}
-        </p>
+          {/* Product Name */}
+          <h3 className="font-serif text-xl leading-tight text-espresso-structural mb-3">
+            {product.name}
+          </h3>
 
-        {/* Specs Row - Weight & Content */}
-        <div className="flex flex-wrap gap-xs pt-sm border-t border-cream-100">
-          {product.cocoaContent && (
-            <span className="inline-flex items-center text-xs font-medium text-gold-400 uppercase tracking-widest">
-              {product.cocoaContent}
-            </span>
-          )}
-          {product.weight.length > 0 && (
-            <span className="inline-flex items-center text-xs font-medium text-chocolate-800">
-              {product.weight[0]}
-            </span>
-          )}
+          {/* Description */}
+          <p className="text-sm text-on-surface-variant flex-grow">
+            {product.shortDescription}
+          </p>
         </div>
       </div>
     </motion.div>

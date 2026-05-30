@@ -11,7 +11,10 @@ export type CategoryKey =
   | 'dolgu-ganaj'
   | 'sos'
   | 'pralin'
-  | 'kakao';
+  | 'kakao'
+  | ' DAMLA_CIKOLATA_PRODUCTS'
+  | 'drajeler'
+  | 'special';
 
 export interface Product {
   id: string;
@@ -62,6 +65,21 @@ export const CATEGORIES: Record<CategoryKey, Category> = {
     key: 'kakao',
     label: 'Kakao Ürünleri',
     description: 'Saf kakao ve türevleri',
+  },
+  'damla-cikolata': {
+    key: 'damla-cikolata',
+    label: 'Damla Çikolata',
+    description: 'Çeşitli çikolata damlaları',
+  },
+  drajeler: {
+    key: 'drajeler',
+    label: 'Drajeler',
+    description: 'Renkli ve lezzetli drajelerimiz',
+  },
+  special: {
+    key: 'special',
+    label: 'Special Ürünler',
+    description: 'Özel seçilmiş premium ürünler',
   },
 };
 
@@ -603,8 +621,453 @@ export const KAKAO_PRODUCTS: Product[] = [
 ];
 
 // ═══════════════════════════════════════════════════════════════════
-// ALL PRODUCTS
+// DAMLA ÇİKOLATALAR (4 products)
+// ═════
+export const DAMLA_CIKOLATA_PRODUCTS: Product[] = [
+  {
+    id: 'dcl-001',
+    name: 'Bitter Damla Çikolata %70',
+    slug: 'bitter-damla-cikolata-70', 
+    category: 'damla-cikolata',
+    subcategory: 'Bitter',
+    badge: 'PROFESSIONAL',
+    shortDescription: '%70 kakao içerikli bitter damla çikolata',
+    detailedDescription:
+      'Yüksek kakao içeriğiyle yoğun aroma sunan, profesyonel kullanıma uygun bitter damla çikolata. Kek, kurabiye ve tatlılarda ideal.',
+    cocoaContent: '%70',
+    weight: ['500g', '1kg', '5kg'],
+    usageArea: 'Kek, Kurabiye, Tatlı Üzeri',
+    highlights: ['%70 Kakao', 'Yoğun Aroma', 'Profesyonel Kullanım'],
+    image: '/images/products/damla-bitter-70.jpg',
+    featured: true,
+    seoDescription: 'Bitter damla çikolata %70, yoğun aroma',
+  },
+  {
+    id: 'dcl-002',
+    name: 'Sütlü Damla Çikolata %38',
+    slug: 'sutlu-damla-cikolata-38',
+    category: 'damla-cikolata',
+    subcategory: 'Sütlü',
+    badge: 'PROFESSIONAL',
+    shortDescription: '%38 kakao içerikli sütlü damla çikolata',
+    detailedDescription:
+      'Kakao ve süt oranının dengeli olduğu, kremsi yapıya sahip profesyonel sütlü damla çikolata. Kek ve kurabiye tariflerinde tercih edilir.',
+    cocoaContent: '%38',
+    weight: ['500g', '1kg', '5kg'],
+    usageArea: 'Kek, Kurabiye, Tatlı Üzeri',      
+    highlights: ['%38 Kakao', 'Kremsi Yapı', 'Profesyonel Kullanım'],
+    image: '/images/products/damla-sutlu-38.jpg',
+    featured: true,
+    seoDescription: 'Sütlü damla çikolata %38, kremsi yapı',
+  },
+  {
+    id: 'dcl-003',
+    name: 'Beyaz Damla Çikolata %35',
+    slug: 'beyaz-damla-cikolata-35',
+    category: 'damla-cikolata',
+    subcategory: 'Beyaz',
+    badge: 'PROFESSIONAL',
+    shortDescription: '%35 kakao yağı içerikli beyaz damla çikolata',
+    detailedDescription:
+      'Saf kakao yağı bazlı, vanilya aromalı profesyonel beyaz damla çikolata. Kek ve kurabiye tariflerinde renk ve lezzet katmak için ideal.',
+    cocoaContent: '%35 Kakao Yağı',
+    weight: ['500g',  '1kg', '5kg'],
+    usageArea: 'Kek, Kurabiye, Tatlı Üzeri',
+    highlights: ['%35 Kakao Yağı', 'Vanilya Aroması', 'Profesyonel Kullanım'],
+    image: '/images/products/damla-beyaz-35.jpg',
+    featured: false,
+    seoDescription: 'Beyaz damla çikolata %35 kakao yağı',
+  },
+  {
+    id: 'dcl-004',
+    name: 'Ruby Damla Çikolata %47',
+    slug: 'ruby-damla-cikolata-47',
+    category: 'damla-cikolata',
+    subcategory: 'Ruby',
+    badge: 'GOLD SERIES',
+    shortDescription: '%47 kakao içerikli ruby damla çikolata',
+    detailedDescription:
+      'Doğal pembe renkli, meyvemsi aromaya sahip ruby damla çikolata. Kek ve kurabiye tariflerinde görsel ve lezzet farkı yaratmak için ideal profesyonel ürün.',
+    cocoaContent: '%47',
+    weight: ['500g', '1kg', '5kg'],
+    usageArea: 'Kek, Kurabiye, Tatlı Üzeri',
+    highlights: ['%47 Kakao', 'Meyvemsi Aroma', 'Görsel Fark'],
+    image: '/images/products/damla-ruby-47.jpg',
+    featured: false,
+    seoDescription: 'Ruby damla çikolata %47, meyvemsi aroma',
+  },
+];  
+
+
 // ═══════════════════════════════════════════════════════════════════
+// DRAJELER (19 products)
+// ═══════════════════════════════════════════════════════════════════
+
+export const DRAJELER_PRODUCTS: Product[] = [
+  {
+    id: 'drj-001',
+    name: 'Antepfıstığı Draje',
+    slug: 'antepfistigi-draje',
+    category: 'drajeler',
+    subcategory: 'Kuruyemiş',
+    badge: 'HANDMADE',
+    shortDescription: 'Antepfıstığı çekirdeğinin çikolata ile kaplanmış hali',
+    detailedDescription:
+      'Kaliteli antepfıstığı çekirdeğinin ince çikolata tabakasıyla kaplanmış, lezzetli ve çıtır drajeler. Tatlı seçenekleri ve hediye paketlerine ideal.',
+    weight: ['500g', '1kg', '2kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Masa Sunumu',
+    highlights: ['Antepfıstığı İçi', 'Çikolata Kaplaması', 'Çıtır Tekstür'],
+    image: '/images/products/draje-antepfistigi.jpg',
+    featured: true,
+    seoDescription: 'Antepfıstığı draje, çikolata kaplı',
+  },
+  {
+    id: 'drj-002',
+    name: 'Badem Draje',
+    slug: 'badem-draje',
+    category: 'drajeler',
+    subcategory: 'Kuruyemiş',
+    badge: 'HANDMADE',
+    shortDescription: 'Kavrulmuş badem çekirdeğinin çikolata kaplaması',
+    detailedDescription:
+      'Taze kavrulmuş badem çekirdeğinin lezzetli çikolata tabakasıyla kaplanmış, yumuşak dış ve çıtır iç yapıya sahip drajeler.',
+    weight: ['500g', '1kg', '2kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Parti',
+    highlights: ['Kavrulmuş Badem', 'İnce Kaplama', 'Yumuşak Dış'],
+    image: '/images/products/draje-badem.jpg',
+    featured: true,
+    seoDescription: 'Badem draje, çikolata kaplı badem',
+  },
+  {
+    id: 'drj-003',
+    name: 'Badem Şekeri',
+    slug: 'badem-sekeri',
+    category: 'drajeler',
+    subcategory: 'Şeker Coated',
+    badge: 'HANDMADE',
+    shortDescription: 'Şeker kaplaması yapılmış kavrulmuş badem',
+    detailedDescription:
+      'Kavrulmuş bademin kırılgan şeker kaplamasıyla kaplı, tatlı ve çıtır yapıda badem şekeri. Nostaljik tatlı tercihi.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Tatlı Seçenekleri, Nostalji Ürünü, Hediye',
+    highlights: ['Kavrulmuş Badem', 'Şeker Kaplama', 'Çıtır Yapı'],
+    image: '/images/products/draje-badem-sekeri.jpg',
+    featured: false,
+    seoDescription: 'Badem şekeri, şeker kaplı badem',
+  },
+  {
+    id: 'drj-004',
+    name: 'Bonibon',
+    slug: 'bonibon',
+    category: 'drajeler',
+    subcategory: 'Bonbon',
+    badge: 'HANDMADE',
+    shortDescription: 'Renkli ve lezzetli çikolata bonbonları',
+    detailedDescription:
+      'Çeşitli tatlarıyla hazırlanan, renkli çikolata kaplamasıyla sunulan bonbon drajeler. Her bir tadında farklı bir lezzet deneyimi.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Özel Günler',
+    highlights: ['Çok Tatl', 'Renkli Kaplama', 'Gourmet Deneyim'],
+    image: '/images/products/draje-bonibon.jpg',
+    featured: true,
+    seoDescription: 'Bonibon, renkli çikolata bonbonları',
+  },
+  {
+    id: 'drj-005',
+    name: 'Bronz Kahve',
+    slug: 'bronz-kahve',
+    category: 'drajeler',
+    subcategory: 'Kahve Aromalı',
+    badge: 'HANDMADE',
+    shortDescription: 'Kahve aromalı çikolata drajesi',
+    detailedDescription:
+      'Yoğun kahve aromasıyla hazırlanan, kahve severler için tasarlanmış bronze renkli çikolata kaplamalı draje.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Kahve Severleri, Tatlı Seçenekleri, Hediye',
+    highlights: ['Kahve Aroması', 'Bronze Renk', 'Yoğun Tat'],
+    image: '/images/products/draje-bronz-kahve.jpg',
+    featured: false,
+    seoDescription: 'Bronz kahve draje, kahve aromalı',
+  },
+  {
+    id: 'drj-006',
+    name: 'Çakıltaşı',
+    slug: 'cakiltasi',
+    category: 'drajeler',
+    subcategory: 'Klasik',
+    badge: 'HANDMADE',
+    shortDescription: 'Geleneksel çakıltaşı şekli draje',
+    detailedDescription:
+      'Çıtır ve hafif kavrulmuş çekirdeğin şeker tarafından çevrili, geleneksel çakıltaşı şeklinde draje. Klasik tatlı tercihlerinin favorisi.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Tatlı Seçenekleri, Geleneksel, Masa Sunumu',
+    highlights: ['Geleneksel Şekil', 'Şeker Kaplaması', 'Çıtır Yapı'],
+    image: '/images/products/draje-cakiltasi.jpg',
+    featured: true,
+    seoDescription: 'Çakıltaşı draje, geleneksel çikolata',
+  },
+  {
+    id: 'drj-007',
+    name: 'Fındık Draje',
+    slug: 'findik-draje',
+    category: 'drajeler',
+    subcategory: 'Kuruyemiş',
+    badge: 'HANDMADE',
+    shortDescription: 'İç fındığın çikolata kaplaması',
+    detailedDescription:
+      'Seçilmiş iç fındığının ince çikolata tabakasıyla kaplanmış, fındık severlerin favori seçeneği olan draje.',
+    weight: ['500g', '1kg', '2kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Premium Sunumu',
+    highlights: ['İç Fındık', 'Çikolata Kaplaması', 'Premium Kalite'],
+    image: '/images/products/draje-findik.jpg',
+    featured: true,
+    seoDescription: 'Fındık draje, çikolata kaplı fındık',
+  },
+  {
+    id: 'drj-008',
+    name: 'Kahve Mix',
+    slug: 'kahve-mix',
+    category: 'drajeler',
+    subcategory: 'Kahve Aromalı',
+    badge: 'HANDMADE',
+    shortDescription: 'Çeşitli kahve aromalı drajeler karışımı',
+    detailedDescription:
+      'Kahve aromasının farklı yoğunluklarda sunulduğu, çeşitli çikolata kaplamalı kahve draje mix. Her birinde farklı bir kahve deneyimi.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Kahve Seçenekleri, Hediye Paketi, Profesyonel Sunumu',
+    highlights: ['Kahve Aroması', 'Çeşitli Çikolata', 'Mix Ürün'],
+    image: '/images/products/draje-kahve-mix.jpg',
+    featured: false,
+    seoDescription: 'Kahve mix draje, karışık kahve aromalı',
+  },
+  {
+    id: 'drj-009',
+    name: 'Kalp Draje',
+    slug: 'kalp-draje',
+    category: 'drajeler',
+    subcategory: 'Özel Şekil',
+    badge: 'HANDMADE',
+    shortDescription: 'Sevgi sembolü kalp şeklinde draje',
+    detailedDescription:
+      'Romantik kalp şeklinde, çikolata ve renkli kaplama seçenekleriyle sunulan draje. Sevgili hediyesi ve özel günlerin favorisi.',
+    weight: ['250g', '500g'],
+    usageArea: 'Sevgili Hediyesi, Özel Günler, Romantik Sunumu',
+    highlights: ['Kalp Şekli', 'Romantik Tasarım', 'Özel Kaplama'],
+    image: '/images/products/draje-kalp.jpg',
+    featured: true,
+    seoDescription: 'Kalp draje, romantik şekil',
+  },
+  {
+    id: 'drj-010',
+    name: 'Mokka Fındık',
+    slug: 'mokka-findik',
+    category: 'drajeler',
+    subcategory: 'Kahve-Fındık',
+    badge: 'HANDMADE',
+    shortDescription: 'Fındık içi, mokka aromalı çikolata kaplaması',
+    detailedDescription:
+      'Sıcak mokka aromasıyla şehvetle kaplanmış fındık draje. Kahve ve fındık severler için mükemmel kombinasyon.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Kahve Vakti',
+    highlights: ['Fındık İçi', 'Mokka Aroması', 'Premium Kombinasyon'],
+    image: '/images/products/draje-mokka-findik.jpg',
+    featured: false,
+    seoDescription: 'Mokka fındık draje, kahve fındık kombinasyonu',
+  },
+  {
+    id: 'drj-011',
+    name: 'Narlı Fındık',
+    slug: 'narli-findik',
+    category: 'drajeler',
+    subcategory: 'Meyveli',
+    badge: 'HANDMADE',
+    shortDescription: 'Fındık içi, nar aromalı çikolata kaplaması',
+    detailedDescription:
+      'Fringe nar aromasıyla kaplanmış fındık draje. Meyvemsi lezzet sevenlerin seçim yapabileceği, farklı bir kombinasyon.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Tatlı Seçenekleri, Meyveli Ürünler, Hediye',
+    highlights: ['Fındık İçi', 'Nar Aroması', 'Meyvemsi Tat'],
+    image: '/images/products/draje-narli-findik.jpg',
+    featured: false,
+    seoDescription: 'Narlı fındık draje, nar aromalı',
+  },
+  {
+    id: 'drj-012',
+    name: 'Portakal Draje',
+    slug: 'portakal-draje',
+    category: 'drajeler',
+    subcategory: 'Meyveli',
+    badge: 'HANDMADE',
+    shortDescription: 'Portakal aromalı çikolata kaplı draje',
+    detailedDescription:
+      'Taze portakal aromasıyla enerji veren çikolata draje. Meyvemsi ve ferahlatıcı lezzetiyle yaz aylarının favorisi.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Meyveli Seçenekler, Yaz Tatlıları, Hediye',
+    highlights: ['Portakal Aroması', 'Ferah Tat', 'Meyveli'],
+    image: '/images/products/draje-portakal.jpg',
+    featured: false,
+    seoDescription: 'Portakal draje, portakal aromalı',
+  },
+  {
+    id: 'drj-013',
+    name: 'Pütürlü Badem',
+    slug: 'puturlulu-badem',
+    category: 'drajeler',
+    subcategory: 'Kuruyemiş',
+    badge: 'HANDMADE',
+    shortDescription: 'Pürüzlü çikolata kaplamalı badem',
+    detailedDescription:
+      'Kavrulmuş bademin pürüzlü ve çok katmanlı çikolata kaplamasıyla sunulan, tekstürlü görüntü ve yoğun lezzeti olan draje.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Hediye Paketi, Tatlı Seçenekleri, Premium Sunumu',
+    highlights: ['Pütürlü Kaplama', 'Badem İçi', 'Tekstürlü Görüntü'],
+    image: '/images/products/draje-puturlulu-badem.jpg',
+    featured: true,
+    seoDescription: 'Pütürlü badem draje, pürüzlü kaplama',
+  },
+  {
+    id: 'drj-014',
+    name: 'Pütürlü Fındık',
+    slug: 'puturlulu-findik',
+    category: 'drajeler',
+    subcategory: 'Kuruyemiş',
+    badge: 'HANDMADE',
+    shortDescription: 'Pürüzlü çikolata kaplamalı fındık',
+    detailedDescription:
+      'Fındığın pürüzlü ve çok katmanlı çikolata kaplamasıyla sunulan, görsel olarak çekici ve lezzetli premium draje.',
+    weight: ['500g', '1kg', '2kg'],
+    usageArea: 'Hediye Paketi, Premium Sunumu, Özel Sunumu',
+    highlights: ['Pütürlü Kaplama', 'Fındık İçi', 'Premium Tasarım'],
+    image: '/images/products/draje-puturlulu-findik.jpg',
+    featured: true,
+    seoDescription: 'Pütürlü fındık draje, pürüzlü kaplama',
+  },
+  {
+    id: 'drj-015',
+    name: 'Rainbow',
+    slug: 'rainbow',
+    category: 'drajeler',
+    subcategory: 'Renkli',
+    badge: 'HANDMADE',
+    shortDescription: 'Renkli çikolata kaplama yapılmış drajeler',
+    detailedDescription:
+      'Gökkuşağı renklerinde farklı çikolata kaplamalı drajeler. Çocuklu aileler ve eğlenceli sunumlar için ideal seçim.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Çocuk Partileri, Renkli Sunumlar, Hediye',
+    highlights: ['Renkli Kaplama', 'Gökkuşağı Renkleri', 'Eğlenceli'],
+    image: '/images/products/draje-rainbow.jpg',
+    featured: false,
+    seoDescription: 'Rainbow draje, renkli çikolata drajeler',
+  },
+  {
+    id: 'drj-016',
+    name: 'Renkli Mix Badem',
+    slug: 'renkli-mix-badem',
+    category: 'drajeler',
+    subcategory: 'Renkli Mix',
+    badge: 'HANDMADE',
+    shortDescription: 'Çeşitli renkli çikolata kaplı badem',
+    detailedDescription:
+      'Bademin farklı renkli çikolata kaplamalı karışımı. Görsel çekiciliği ve çeşitli tat seçenekleriyle hediye paketlerine ideal.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Hediye Paketi, Renkli Sunumlar, Tatlı Seçenekleri',
+    highlights: ['Renkli Kaplama', 'Badem İçi', 'Mix Ürün'],
+    image: '/images/products/draje-renkli-mix-badem.jpg',
+    featured: true,
+    seoDescription: 'Renkli mix badem draje, karışık renkli',
+  },
+  {
+    id: 'drj-017',
+    name: 'Tramisu Ceviz',
+    slug: 'tramisu-ceviz',
+    category: 'drajeler',
+    subcategory: 'Özel Tat',
+    badge: 'GOLD SERIES',
+    shortDescription: 'Tramisu aromalı çikolata kaplı ceviz',
+    detailedDescription:
+      'Tramisu tatlısının aromasıyla hazırlanan ceviz draje. Sofistike tat sevenlerin seçimi olan özel kombinasyon.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Gourmet Seçenek, Hediye Paketi, Özel Sunumu',
+    highlights: ['Tramisu Aroması', 'Ceviz İçi', 'Sofistike Tat'],
+    image: '/images/products/draje-tramisu-ceviz.jpg',
+    featured: false,
+    seoDescription: 'Tramisu ceviz draje, tramisu aromalı',
+  },
+  {
+    id: 'drj-018',
+    name: 'Üzüm Draje',
+    slug: 'uzum-draje',
+    category: 'drajeler',
+    subcategory: 'Meyveli',
+    badge: 'HANDMADE',
+    shortDescription: 'Kuru üzüm çekirdeğinin çikolata kaplaması',
+    detailedDescription:
+      'Seçilmiş kuru üzüm çekirdeğinin ince çikolata tabakasıyla kaplanmış, doğal meyvemsi lezzeti olan draje.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Meyveli Seçenekler, Tatlı Seçenekleri, Hediye',
+    highlights: ['Kuru Üzüm', 'Çikolata Kaplaması', 'Meyvemsi'],
+    image: '/images/products/draje-uzum.jpg',
+    featured: false,
+    seoDescription: 'Üzüm draje, kuru üzüm çikolata',
+  },
+  {
+    id: 'drj-019',
+    name: 'Yeşil Pütürlü Badem',
+    slug: 'yesil-puturlulu-badem',
+    category: 'drajeler',
+    subcategory: 'Renkli',
+    badge: 'HANDMADE',
+    shortDescription: 'Yeşil pürüzlü çikolata kaplı badem',
+    detailedDescription:
+      'Bademin yeşil renkli pürüzlü çikolata kaplamasıyla sunulan, göz alıcı ve lezzetli premium draje. Bahar koleksiyonu favori.',
+    weight: ['500g', '1kg'],
+    usageArea: 'Hediye Paketi, Mevsimlik Sunumu, Özel Tasarım',
+    highlights: ['Yeşil Renk', 'Pütürlü Kaplama', 'Premium Tasarım'],
+    image: '/images/products/draje-yesil-puturlulu-badem.jpg',
+    featured: false,
+    seoDescription: 'Yeşil pütürlü badem draje, yeşil renkli',
+  },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// SPECIAL PRODUCTS
+// ═══════════════════════════════════════════════════════════════════
+
+ export const SPECIAL_PRODUCTS : Product[] = [
+  {
+    id: 'madlen-001',
+    name: 'Sütlü Ve Bitter Madlen Çikolata ',
+    slug: 'madlen-001',
+    category: 'special',
+    subcategory: 'Toz Kakao',
+    badge: 'PROFESSIONAL',
+    shortDescription: ' Sütlü ve bitter madlen çikolata, %30 ve %70 kakao içeriği',
+    detailedDescription:
+      ' Sütlü madlen çikolata, %30 kakao içeriğiyle zenginleştirilmiş, kremsi ve tatlı bir lezzete sahip profesyonel çikolata ürünü.',
+    weight: ['500g', '1kg', '5kg', '25kg'],
+    usageArea: '',
+    highlights: ['%22-24 Yağ Oranı', 'Açık renk', 'Geniş Kullanım'],
+    image: '/public/images/special/madlen1.png',
+    featured: true,
+    seoDescription: 'Sütlü ve bitter madlen çikolata, %30 kakao içeriği',
+  },
+  {
+    id: 'kak-002',
+    name: 'Special Çikolatalar ',
+    slug: 'Speacial-002',
+    category: 'special',
+    subcategory: 'specialürünler',
+    badge: 'PROFESSIONAL',
+    shortDescription: 'Farklı çeşitlerde hazırlanan özel çikolata ürünleri',
+    detailedDescription:
+      'Farklı çeşitlerde hazırlanan özel çikolata ürünleri, benzersiz tatlar ve görünümler sunarak profesyonel pastacılık ve şeflerin tercihi.',
+    weight: ['500g', '1kg', '5kg', '25kg'],
+    usageArea: '',
+    highlights: ['Doğal İşlem', 'Asidik Profil', 'Standart Kullanım'],
+    image: '/images/products/kakao-dogal-toz.jpg',
+    featured: true,
+    seoDescription: 'Farklı çeşitlerde hazırlanan özel çikolata ürünleri, benzersiz tatlar ve görünümler',
+  },];
 
 export const ALL_PRODUCTS: Product[] = [
   ...KUVERTUR_PRODUCTS,
@@ -612,6 +1075,8 @@ export const ALL_PRODUCTS: Product[] = [
   ...SOS_PRODUCTS,
   ...PRALIN_PRODUCTS,
   ...KAKAO_PRODUCTS,
+  ...DRAJELER_PRODUCTS,
+  ...SPECIAL_PRODUCTS,
 ];
 
 export const PRODUCTS_BY_CATEGORY: Record<CategoryKey, Product[]> = {
@@ -620,6 +1085,8 @@ export const PRODUCTS_BY_CATEGORY: Record<CategoryKey, Product[]> = {
   sos: SOS_PRODUCTS,
   pralin: PRALIN_PRODUCTS,
   kakao: KAKAO_PRODUCTS,
+  drajeler: DRAJELER_PRODUCTS,
+  special: SPECIAL_PRODUCTS,
 };
 
 export const FEATURED_PRODUCTS_CATALOG = ALL_PRODUCTS.filter((p) => p.featured);

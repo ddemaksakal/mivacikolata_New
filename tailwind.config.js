@@ -7,6 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'espresso-structural': '#2B1E1A',
+        'champagne-gold': '#D4AF37',
+        'paper-off-white': '#FDFBF7',
+        'surface': '#fff8f6',
+        'hairline-border': 'rgba(43, 30, 26, 0.15)',
+        'on-surface-variant': '#4f4542',
+        'on-primary-container': '#98847e',
+        'primary': '#120805',
+        'on-primary': '#ffffff',
         chocolate: {
           950: '#0F0905',
           900: '#1A0E08',
