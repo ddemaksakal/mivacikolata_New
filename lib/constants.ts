@@ -1,5 +1,6 @@
 // Navigation links
 export const NAV_LINKS = [
+  { label: 'ANASAYFA', href: '/' },
   { label: 'KOLEKSİYONLAR', href: '/urunler' },
   { label: 'VİZYON & MİSYON', href: '/vizyon-misyon' },
   { label: 'İLETİŞİM', href: '/iletisim' },

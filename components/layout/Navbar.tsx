@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BRAND, NAV_LINKS } from '@/lib/constants';
 
@@ -95,9 +96,11 @@ export function Navbar() {
           whileHover={{ scale: 1.02 }}
           transition={{ duration: 0.3 }}
         >
-          <h1 className="text-xl font-serif font-semibold text-chocolate-900 tracking-widest">
-            {BRAND.name}
-          </h1>
+          <Link href="/">
+            <h1 className="text-xl font-serif font-semibold text-chocolate-900 tracking-widest cursor-pointer">
+              {BRAND.name}
+            </h1>
+          </Link>
         </motion.div>
 
         {/* Desktop Navigation */}
