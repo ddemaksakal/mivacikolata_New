@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
+import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
@@ -144,7 +145,7 @@ export function HeroSection() {
 
           {/* CTA Button */}
           <motion.div variants={itemVariants} className="pt-lg">
-            <a href="#collections" className="inline-block">
+            <Link href="/urunler" className="inline-block">
               <Button
                 variant="primary"
                 size="lg"
@@ -152,7 +153,7 @@ export function HeroSection() {
               >
                 KOLEKSİYONU KEŞFEDİN
               </Button>
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 

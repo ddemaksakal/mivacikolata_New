@@ -31,11 +31,7 @@ export default function ProductsPage() {
 
   // Get products based on selected category
   const displayProducts = useMemo(() => {
-    if (selectedCategory === 'all') {
-      // Show featured products grouped by category
-      return null;
-    }
-    // Show all products in selected category
+    if (selectedCategory === 'all') return null;
     return PRODUCTS_BY_CATEGORY[selectedCategory] || [];
   }, [selectedCategory]);
 

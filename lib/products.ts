@@ -12,7 +12,7 @@ export type CategoryKey =
   | 'sos'
   | 'pralin'
   | 'kakao'
-  | ' DAMLA_CIKOLATA_PRODUCTS'
+  | 'damla-cikolata'
   | 'drajeler'
   | 'special';
 
@@ -662,21 +662,21 @@ export const DAMLA_CIKOLATA_PRODUCTS: Product[] = [
   },
   {
     id: 'dcl-003',
-    name: 'Beyaz Damla Çikolata %35',
-    slug: 'beyaz-damla-cikolata-35',
+    name: 'Fildişi Damla Çikolata %35',
+    slug: 'fildisi-damla-cikolata-35',
     category: 'damla-cikolata',
-    subcategory: 'Beyaz',
+    subcategory: 'Fildişi',
     badge: 'PROFESSIONAL',
-    shortDescription: '%35 kakao yağı içerikli beyaz damla çikolata',
+    shortDescription: '%35 kakao yağı içerikli fildişi damla çikolata',
     detailedDescription:
-      'Saf kakao yağı bazlı, vanilya aromalı profesyonel beyaz damla çikolata. Kek ve kurabiye tariflerinde renk ve lezzet katmak için ideal.',
+      'Saf kakao yağı bazlı, kremsi ve vanilya aromalı profesyonel fildişi damla çikolata. Kek ve kurabiye tariflerinde yumuşak renk ve lezzet için ideal.',
     cocoaContent: '%35 Kakao Yağı',
-    weight: ['500g',  '1kg', '5kg'],
+    weight: ['500g', '1kg', '5kg'],
     usageArea: 'Kek, Kurabiye, Tatlı Üzeri',
-    highlights: ['%35 Kakao Yağı', 'Vanilya Aroması', 'Profesyonel Kullanım'],
-    image: '/images/products/damla-beyaz-35.jpg',
-    featured: false,
-    seoDescription: 'Beyaz damla çikolata %35 kakao yağı',
+    highlights: ['%35 Kakao Yağı', 'Kremsi Renk', 'Profesyonel Kullanım'],
+    image: '/images/products/damla-fildisi-35.jpg',
+    featured: true,
+    seoDescription: 'Fildişi damla çikolata %35 kakao yağı',
   },
   {
     id: 'dcl-004',
@@ -693,7 +693,7 @@ export const DAMLA_CIKOLATA_PRODUCTS: Product[] = [
     usageArea: 'Kek, Kurabiye, Tatlı Üzeri',
     highlights: ['%47 Kakao', 'Meyvemsi Aroma', 'Görsel Fark'],
     image: '/images/products/damla-ruby-47.jpg',
-    featured: false,
+    featured: true,
     seoDescription: 'Ruby damla çikolata %47, meyvemsi aroma',
   },
 ];  
@@ -1075,6 +1075,7 @@ export const ALL_PRODUCTS: Product[] = [
   ...SOS_PRODUCTS,
   ...PRALIN_PRODUCTS,
   ...KAKAO_PRODUCTS,
+  ...DAMLA_CIKOLATA_PRODUCTS,
   ...DRAJELER_PRODUCTS,
   ...SPECIAL_PRODUCTS,
 ];
@@ -1085,6 +1086,7 @@ export const PRODUCTS_BY_CATEGORY: Record<CategoryKey, Product[]> = {
   sos: SOS_PRODUCTS,
   pralin: PRALIN_PRODUCTS,
   kakao: KAKAO_PRODUCTS,
+  'damla-cikolata': DAMLA_CIKOLATA_PRODUCTS,
   drajeler: DRAJELER_PRODUCTS,
   special: SPECIAL_PRODUCTS,
 };

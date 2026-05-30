@@ -115,7 +115,7 @@ export function CraftsmanshipSection() {
           {/* CTA Link */}
           <motion.div variants={itemVariants} className="mt-2xl sm:mt-3xl pt-lg">
             <Link
-              href="#about"
+              href="/vizyon-misyon"
               className="inline-flex items-center gap-md font-serif font-light text-chocolate-900 hover:text-gold-400 transition-colors duration-300 text-base sm:text-lg group"
             >
               HİKAYEMİZİ KEŞFET

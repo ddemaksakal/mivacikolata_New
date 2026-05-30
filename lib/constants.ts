@@ -1,9 +1,8 @@
 // Navigation links
 export const NAV_LINKS = [
-  { label: 'KOLEKSİYONLAR', href: '#collections' },
-  { label: 'HAKKIMIZDA', href: '#about' },
-  { label: 'VİZYON & MİSYON', href: '#vision' },
-  { label: 'İLETİŞİM', href: '#contact' },
+  { label: 'KOLEKSİYONLAR', href: '/urunler' },
+  { label: 'VİZYON & MİSYON', href: '/vizyon-misyon' },
+  { label: 'İLETİŞİM', href: '/iletisim' },
 ];
 
 // Brand information
