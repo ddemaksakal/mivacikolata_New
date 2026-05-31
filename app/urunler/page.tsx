@@ -1,7 +1,9 @@
 'use client';
 
+import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import type { CategoryKey } from '@/lib/products';
 import { CATEGORIES, PRODUCTS_BY_CATEGORY } from '@/lib/products';
 import { CategoryFilter } from '@/components/products/CategoryFilter';
@@ -9,11 +11,10 @@ import { ProductsHero } from '@/components/products/ProductsHero';
 import { ProductGrid } from '@/components/products/ProductGrid';
 import { CategorySection } from '@/components/products/CategorySection';
 
-export default function ProductsPage() {
+function ProductsContent() {
   const searchParams = useSearchParams();
   const categoryParam = (searchParams?.get('kategori') as CategoryKey | 'all' | null) || 'all';
 
-  // Validate category
   const validCategories = ['all', ...Object.keys(CATEGORIES)];
   const selectedCategory = validCategories.includes(categoryParam)
     ? (categoryParam as CategoryKey | 'all')
@@ -29,17 +30,13 @@ export default function ProductsPage() {
     }
   }, []);
 
-  // Get products based on selected category
   const displayProducts = useMemo(() => {
     if (selectedCategory === 'all') return null;
     return PRODUCTS_BY_CATEGORY[selectedCategory] || [];
   }, [selectedCategory]);
 
-  // Get featured products grouped by category
   const featuredByCategory = useMemo(() => {
-    if (selectedCategory !== 'all') {
-      return null;
-    }
+    if (selectedCategory !== 'all') return null;
 
     const grouped: Record<CategoryKey, any> = {} as Record<CategoryKey, any>;
     (Object.keys(CATEGORIES) as CategoryKey[]).forEach((categoryKey) => {
@@ -51,7 +48,6 @@ export default function ProductsPage() {
     return grouped;
   }, [selectedCategory]);
 
-  // Dynamic hero title
   const heroTitle =
     selectedCategory === 'all'
       ? 'Ürünlerimiz'
@@ -59,7 +55,19 @@ export default function ProductsPage() {
 
   return (
     <div className="w-full">
-      {/* Category Filter - Sticky */}
+      {/* Logo */}
+      <div className="flex justify-center items-center py-6 bg-cream-50">
+        <Image
+          src="/images/logo2.png"
+          alt="Miva Çikolata"
+          width={400}
+          height={225}
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      {/* Category Filter */}
       <CategoryFilter
         selectedCategory={selectedCategory}
         onCategoryChange={handleCategoryChange}
@@ -67,12 +75,9 @@ export default function ProductsPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        {/* Hero Section */}
         <ProductsHero title={heroTitle} />
 
-        {/* Products Display */}
         {selectedCategory === 'all' && featuredByCategory ? (
-          // Featured view: grouped by category
           <div className="space-y-20">
             {Object.values(CATEGORIES).map((category) => {
               const categoryData = featuredByCategory[category.key];
@@ -88,10 +93,17 @@ export default function ProductsPage() {
             })}
           </div>
         ) : displayProducts ? (
-          // Category view: all products in flat grid
           <ProductGrid products={displayProducts} />
         ) : null}
       </div>
     </div>
+  );
+}
+
+export default function UrunlerPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-cream-50" />}>
+      <ProductsContent />
+    </Suspense>
   );
 }

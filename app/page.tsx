@@ -4,8 +4,7 @@ import { motion } from 'framer-motion';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { VitrineSection } from '@/components/sections/VitrineSection';
 import { CraftsmanshipSection } from '@/components/sections/CraftsmanshipSection';
-import { ProcessSection } from '@/components/sections/ProcessSection';
-import { CTASection } from '@/components/sections/CTASection';
+
 
 export default function Home() {
   const pageVariants = {
@@ -35,11 +34,7 @@ export default function Home() {
       {/* Craftsmanship Section */}
       <CraftsmanshipSection />
 
-      {/* Process Section */}
-      <ProcessSection />
 
-      {/* CTA Section */}
-      <CTASection />
     </motion.div>
   );
 }

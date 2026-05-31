@@ -49,14 +49,12 @@ export function CraftsmanshipSection() {
           className="relative order-2 lg:order-1 min-h-96 sm:min-h-screen lg:min-h-auto"
         >
           <Image
-            src="https://images.unsplash.com/photo-1599599810763-4a46c8e9155f?w=600&h=800&fit=crop"
-            alt="Mirasmız ve Zanaat - Kakao Çekirdekleri"
+            src="/images/hikayemiz.png"
+            alt="Mirasmız ve Zanaat"
             fill
             className="object-cover"
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            placeholder="blur"
-            blurDataURL="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'%3E%3Crect fill='%23F5EFE6' width='400' height='500'/%3E%3C/svg%3E"
           />
 
           {/* Overlay gradient */}

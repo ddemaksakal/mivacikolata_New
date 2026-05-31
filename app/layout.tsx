@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Inter } from 'next/font/google';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -50,25 +50,11 @@ export const metadata: Metadata = {
     description: 'Premium el yapımı çikolata. Geleneksel sanat ve modern lüksün buluşma noktası.',
     images: [
       {
-        url: '/images/banner.png',
+        url: '/images/logo2.png',
         width: 1200,
         height: 630,
         alt: 'MIVA Çikolata - Premium Artisanal Chocolates',
         type: 'image/png',
-      },
-      {
-        url: '/images/banner1.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'MIVA Çikolata - Premium Artisanal Chocolates',
-        type: 'image/jpeg',
-      },
-      {
-        url: '/images/banner3.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'MIVA Çikolata - Premium Artisanal Chocolates',
-        type: 'image/jpeg',
       },
     ],
   },
@@ -92,16 +78,18 @@ export const metadata: Metadata = {
   verification: {
     google: 'google-site-verification-code',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: '#0F0905',
 };
 
 export default function RootLayout({
@@ -115,7 +103,6 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <link rel="canonical" href="https://miva-cikolata.com" />
-        <meta name="theme-color" content="#0F0905" />
       </head>
       <body
         className={`${cormorant.variable} ${inter.variable} font-sans antialiased bg-cream-50 text-charcoal scroll-smooth`}

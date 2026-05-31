@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
 
 type ContactType = 'general' | 'order';
 
@@ -11,111 +10,175 @@ const emailMap: Record<ContactType, string> = {
   order: 'bespoke@mivacikolata.com',
 };
 
-const labelMap: Record<ContactType, string> = {
-  general: 'Genel Destek',
-  order: 'Özel Sipariş',
-};
+const ease = [0.25, 0.1, 0.25, 1] as const;
 
 const fieldVariants = {
-  hidden: { opacity: 0, y: 16 },
+  hidden: { opacity: 0, y: 14 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.09, duration: 0.45, ease: 'easeOut' },
+    transition: { delay: i * 0.09, duration: 0.5, ease },
   }),
 };
 
+const labelClass =
+  'block font-sans uppercase tracking-[2px] mb-2' as const;
+
 const inputClass =
-  'w-full bg-transparent border-0 border-b border-[#D4C5B5] pb-3 pt-1 text-sm font-sans text-charcoal placeholder-gray-400 focus:outline-none focus:border-gold-400 transition-colors duration-200 rounded-none';
+  'w-full bg-transparent border-0 border-b pb-[10px] pt-[10px] font-sans outline-none transition-colors duration-300 rounded-none placeholder:text-[#C4B8AD]' as const;
 
 export function ContactForm() {
   const [contactType, setContactType] = useState<ContactType>('general');
 
   return (
-    <div className="flex flex-col gap-8">
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.6, ease }}
+      className="p-8 md:p-12"
+      style={{ background: '#FAF7F2' }}
+    >
       {/* Contact type selector */}
-      <div>
-        <div className="flex gap-3 mb-3">
-          {(['general', 'order'] as ContactType[]).map((type) => (
-            <motion.button
-              key={type}
+      <div className="flex items-center gap-1 mb-8">
+        {(['order', 'general'] as ContactType[]).map((type, i) => (
+          <span key={type} className="flex items-center gap-1">
+            {i > 0 && (
+              <span className="font-sans mx-2" style={{ fontSize: '11px', color: '#C4B8AD' }}>
+                /
+              </span>
+            )}
+            <button
               type="button"
               onClick={() => setContactType(type)}
-              className={`px-5 py-1.5 text-label-caps transition-all duration-300 ${
-                contactType === type
-                  ? 'bg-espresso-structural text-paper-off-white border border-espresso-structural'
-                  : 'bg-transparent text-espresso-structural border border-hairline-border hover:border-champagne-gold hover:text-champagne-gold'
-              }`}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="font-sans uppercase tracking-[2px] transition-colors duration-200"
+              style={{
+                fontSize: '10px',
+                color: contactType === type ? '#C9A84C' : '#9CA3AF',
+                borderBottom: contactType === type ? '1px solid #C9A84C' : 'none',
+                paddingBottom: '1px',
+              }}
             >
-              {labelMap[type]}
-            </motion.button>
-          ))}
-        </div>
-        <p className="text-xs font-sans text-gray-400">{emailMap[contactType]}</p>
+              {type === 'order' ? 'ÖZEL SİPARİŞ' : 'GENEL DESTEK'}
+            </button>
+          </span>
+        ))}
+        <span className="ml-auto font-sans" style={{ fontSize: '11px', color: '#C4B8AD' }}>
+          {emailMap[contactType]}
+        </span>
       </div>
 
-      {/* Form fields */}
-      <div className="flex flex-col gap-8">
+      {/* Fields */}
+      <div className="flex flex-col">
+        {/* Name */}
         <motion.div
           custom={0}
           variants={fieldVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="mb-8"
         >
-          <label className="block text-label-caps text-on-surface-variant mb-2">
-            İsim / Name
+          <label
+            className={labelClass}
+            style={{ fontSize: '10px', color: '#9CA3AF' }}
+          >
+            İSİM / NAME
           </label>
-          <input type="text" placeholder="Adınız" className={inputClass} />
+          <input
+            type="text"
+            placeholder="Adınız"
+            className={inputClass}
+            style={{
+              borderBottomColor: '#D4C5B5',
+              fontSize: '14px',
+              color: '#2C1810',
+            }}
+            onFocus={(e) => (e.currentTarget.style.borderBottomColor = '#C9A84C')}
+            onBlur={(e) => (e.currentTarget.style.borderBottomColor = '#D4C5B5')}
+          />
         </motion.div>
 
+        {/* Email */}
         <motion.div
           custom={1}
           variants={fieldVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="mb-8"
         >
-          <label className="block text-label-caps text-on-surface-variant mb-2">
-            E-posta / Email
+          <label
+            className={labelClass}
+            style={{ fontSize: '10px', color: '#9CA3AF' }}
+          >
+            E-POSTA / EMAIL ADDRESS
           </label>
-          <input type="email" placeholder="E-posta adresiniz" className={inputClass} />
+          <input
+            type="email"
+            placeholder="E-posta adresiniz"
+            className={inputClass}
+            style={{
+              borderBottomColor: '#D4C5B5',
+              fontSize: '14px',
+              color: '#2C1810',
+            }}
+            onFocus={(e) => (e.currentTarget.style.borderBottomColor = '#C9A84C')}
+            onBlur={(e) => (e.currentTarget.style.borderBottomColor = '#D4C5B5')}
+          />
         </motion.div>
 
+        {/* Message */}
         <motion.div
           custom={2}
           variants={fieldVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
+          className="mb-10"
         >
-          <label className="block text-label-caps text-on-surface-variant mb-2">
-            Mesaj / Message
+          <label
+            className={labelClass}
+            style={{ fontSize: '10px', color: '#9CA3AF' }}
+          >
+            MESAJINIZ / MESSAGE
           </label>
           <textarea
             placeholder="Mesajınızı buraya yazın..."
-            rows={5}
+            rows={4}
             className={`${inputClass} resize-none`}
+            style={{
+              borderBottomColor: '#D4C5B5',
+              fontSize: '14px',
+              color: '#2C1810',
+              minHeight: '100px',
+            }}
+            onFocus={(e) => (e.currentTarget.style.borderBottomColor = '#C9A84C')}
+            onBlur={(e) => (e.currentTarget.style.borderBottomColor = '#D4C5B5')}
           />
         </motion.div>
-      </div>
 
-      {/* Submit button */}
-      <motion.button
-        type="button"
-        custom={3}
-        variants={fieldVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        whileTap={{ scale: 0.98 }}
-        className="mt-2 w-full flex items-center justify-center gap-2 bg-chocolate-900 text-cream-50 text-label-caps px-8 py-4 hover:bg-gold-400 hover:text-chocolate-950 transition-all duration-300"
-      >
-        <Send size={14} />
-        GÖNDER / SEND
-      </motion.button>
-    </div>
+        {/* Submit button */}
+        <motion.button
+          type="button"
+          custom={3}
+          variants={fieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="w-full font-sans uppercase tracking-[2px] py-4 transition-colors duration-300 cursor-pointer"
+          style={{
+            fontSize: '12px',
+            background: '#1C0F0A',
+            color: '#FAF7F2',
+            borderRadius: 0,
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = '#C9A84C')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = '#1C0F0A')}
+        >
+          GÖNDER / SEND
+        </motion.button>
+      </div>
+    </motion.div>
   );
 }

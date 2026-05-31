@@ -1,136 +1,80 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Clock, Mail, Camera, ExternalLink } from 'lucide-react';
 
-const blockVariants = {
-  hidden: { opacity: 0, x: -24 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { delay: i * 0.1, duration: 0.5, ease: 'easeOut' },
-  }),
-};
+const ease = [0.25, 0.1, 0.25, 1] as const;
 
-interface InfoBlockProps {
-  icon: React.ReactNode;
-  title: string;
-  lines: string[];
-  index: number;
-}
-
-function InfoBlock({ icon, title, lines, index }: InfoBlockProps) {
-  return (
-    <motion.div
-      custom={index}
-      variants={blockVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-30px' }}
-      className="flex gap-4"
-    >
-      <div className="mt-0.5 text-champagne-gold flex-shrink-0">{icon}</div>
-      <div>
-        <p className="text-label-caps text-champagne-gold mb-1.5">{title}</p>
-        {lines.map((line, i) => (
-          <p key={i} className="text-sm font-sans text-charcoal leading-relaxed">
-            {line}
-          </p>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
+const blocks = [
+  {
+    label: 'ÖZEL SİPARİŞLER',
+    title: 'Bespoke Inquiries',
+    description:
+      'Kurumsal siparişler, özel tasarım kutular veya atölye işbirlikleri için doğrudan bize ulaşın.',
+    email: 'bespoke@mivacikolata.com',
+  },
+  {
+    label: 'GENEL DESTEK',
+    title: 'General Support',
+    description:
+      'Ürünlerimiz, teslimat seçenekleri veya genel sorularınız için destek ekibimize yazabilirsiniz.',
+    email: 'hello@mivacikolata.com',
+  },
+];
 
 export function ContactInfo() {
   return (
-    <div className="flex flex-col gap-8">
-      <motion.h2
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="font-serif text-[28px] leading-snug text-espresso-structural"
-      >
-        İletişim Bilgileri
-      </motion.h2>
+    <div className="flex flex-col">
+      {blocks.map((block, i) => (
+        <div key={block.label}>
+          {i > 0 && <div className="h-px my-10" style={{ background: '#E8E0D5' }} />}
 
-      <InfoBlock
-        icon={<MapPin size={18} />}
-        title="Mağaza Adresi"
-        lines={['Nişantaşı, Abdi İpekçi Cd. No: 12', '34367 Şişli / İstanbul']}
-        index={0}
-      />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-30px' }}
+            transition={{ duration: 0.6, delay: i * 0.15, ease }}
+            className="flex flex-col gap-4"
+          >
+            {/* Label */}
+            <p
+              className="font-sans font-medium uppercase tracking-[3px] text-gold-400"
+              style={{ fontSize: '10px' }}
+            >
+              {block.label}
+            </p>
 
-      <InfoBlock
-        icon={<Clock size={18} />}
-        title="Çalışma Saatleri"
-        lines={['Pazartesi — Cumartesi: 10:00 - 19:00', 'Pazar: 12:00 - 18:00']}
-        index={1}
-      />
+            {/* Title */}
+            <h3
+              className="font-serif leading-tight"
+              style={{ fontSize: '36px', color: '#2C1810', fontWeight: 400 }}
+            >
+              {block.title}
+            </h3>
 
-      <InfoBlock
-        icon={<Mail size={18} />}
-        title="Genel Destek"
-        lines={['hello@mivacikolata.com']}
-        index={2}
-      />
+            {/* Description */}
+            <p
+              className="font-sans leading-[1.8]"
+              style={{ fontSize: '14px', color: '#6B7280', maxWidth: '320px' }}
+            >
+              {block.description}
+            </p>
 
-      <InfoBlock
-        icon={<Mail size={18} />}
-        title="Özel Siparişler"
-        lines={['bespoke@mivacikolata.com']}
-        index={3}
-      />
-
-      {/* Social media */}
-      <motion.div
-        custom={4}
-        variants={blockVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="flex gap-5"
-      >
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm font-sans text-charcoal hover:text-champagne-gold transition-colors duration-200"
-        >
-          <Camera size={16} />
-          Instagram
-        </a>
-        <a
-          href="https://pinterest.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-sm font-sans text-charcoal hover:text-champagne-gold transition-colors duration-200"
-        >
-          <ExternalLink size={16} />
-          Pinterest
-        </a>
-      </motion.div>
-
-      {/* Map placeholder */}
-      <motion.div
-        custom={5}
-        variants={blockVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        className="mt-2 bg-chocolate-900 h-44 flex items-center justify-center"
-      >
-        <a
-          href="https://maps.google.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 border border-gold-400 text-gold-400 text-label-caps px-6 py-3 hover:bg-gold-400 hover:text-chocolate-950 transition-all duration-300"
-        >
-          <MapPin size={14} />
-          Haritada Gör
-        </a>
-      </motion.div>
+            {/* Email */}
+            <a
+              href={`mailto:${block.email}`}
+              className="font-sans w-fit transition-colors duration-200 hover:text-gold-400 hover:border-gold-400"
+              style={{
+                fontSize: '13px',
+                color: '#2C1810',
+                borderBottom: '1px solid #2C1810',
+                paddingBottom: '2px',
+              }}
+            >
+              {block.email}
+            </a>
+          </motion.div>
+        </div>
+      ))}
     </div>
   );
 }

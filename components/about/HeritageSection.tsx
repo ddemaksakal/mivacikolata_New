@@ -19,7 +19,7 @@ export function HeritageSection() {
             className="relative aspect-[4/5] overflow-hidden"
           >
             <img
-              src="https://picsum.photos/seed/miva-heritage/800/1000"
+              src="/images/hikayemiz.png"
               alt="Miva Çikolata Mirası"
               className="w-full h-full object-cover"
             />
