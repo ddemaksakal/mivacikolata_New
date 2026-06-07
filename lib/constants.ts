@@ -28,21 +28,21 @@ export const FEATURED_PRODUCTS = [
     category: 'Draje',
     name: 'Fındık Draje',
     description: 'Sınırlı üretim, el seçilmiş kakao çekirdekleri ve özel marinasyon tekniği ile hazırlanmış mahir eseri.',
-    image: '/images/drajeler/screen copy 2.png',
+    image: '/images/drajeler/bitterfındıkdraje.png',
   },
   {
     id: 2,
     category: 'MADLEN',
     name: 'Madlen',
     description: ' Geleneksel İstanbul tatlarından ilham alan lüks çikolatası ile kaplı.',
-    image: '/images/madlen1.png',
+    image: '/images/special/anasayfamadlen.png',
   },
   {
     id: 3,
     category: 'DRAJE',
     name: 'Kalp Draje',
     description: 'Kalp şekilli ve koyu çikolata ile kaplı nefis draje. Her locada romantizm ve lezzetin tadı.',
-    image: '/images/kalp-draje.png',
+    image: '/images/special/Anasayfakalpdraje.png',
   },
 ];
 
