@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import type { Product } from '@/lib/products';
 
@@ -10,6 +10,9 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
+  const images = product.images && product.images.length > 1 ? product.images : null;
+  const [current, setCurrent] = useState(0);
+
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -17,6 +20,16 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       y: 0,
       transition: { duration: 0.4, delay: (index || 0) * 0.05 },
     },
+  };
+
+  const prev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrent((c) => (c - 1 + images!.length) % images!.length);
+  };
+
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrent((c) => (c + 1) % images!.length);
   };
 
   return (
@@ -31,28 +44,55 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         <div className="relative aspect-square overflow-hidden bg-surface">
           <motion.div
             className="w-full h-full"
-            whileHover={{ scale: 1.04 }}
+            whileHover={{ scale: images ? 1 : 1.04 }}
             transition={{ duration: 0.7 }}
           >
             <img
-              src={product.image}
+              src={images ? images[current] : product.image}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-opacity duration-300"
             />
           </motion.div>
+
+          {images && (
+            <>
+              {/* Prev / Next buttons */}
+              <button
+                onClick={prev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-7 h-7 flex items-center justify-center transition-colors"
+                aria-label="Önceki görsel"
+              >
+                ‹
+              </button>
+              <button
+                onClick={next}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white rounded-full w-7 h-7 flex items-center justify-center transition-colors"
+                aria-label="Sonraki görsel"
+              >
+                ›
+              </button>
+
+              {/* Dots */}
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+                {images.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={(e) => { e.stopPropagation(); setCurrent(i); }}
+                    className={`w-1.5 h-1.5 rounded-full transition-colors ${i === current ? 'bg-white' : 'bg-white/50'}`}
+                    aria-label={`Görsel ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Content */}
         <div className="p-6 flex flex-col">
-          {/* Badge */}
           <span className="text-label-caps text-champagne-gold mb-3">{product.badge}</span>
-
-          {/* Product Name */}
           <h3 className="font-serif text-xl leading-tight text-espresso-structural mb-3">
             {product.name}
           </h3>
-
-          {/* Description */}
           <p className="text-sm text-on-surface-variant flex-grow">
             {product.shortDescription}
           </p>

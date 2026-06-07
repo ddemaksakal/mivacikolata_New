@@ -40,9 +40,16 @@ function ProductsContent() {
 
     const grouped: Record<CategoryKey, any> = {} as Record<CategoryKey, any>;
     (Object.keys(CATEGORIES) as CategoryKey[]).forEach((categoryKey) => {
+      const featured = (PRODUCTS_BY_CATEGORY[categoryKey] || []).filter((p) => p.featured);
       grouped[categoryKey] = {
         category: CATEGORIES[categoryKey],
-        products: (PRODUCTS_BY_CATEGORY[categoryKey] || []).filter((p) => p.featured),
+        products: categoryKey === 'drajeler'
+          ? [...featured].sort((a, b) => {
+              const aHas = a.image.startsWith('/images/drajeler/') ? 1 : 0;
+              const bHas = b.image.startsWith('/images/drajeler/') ? 1 : 0;
+              return bHas - aHas;
+            })
+          : featured,
       };
     });
     return grouped;
