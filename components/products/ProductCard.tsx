@@ -37,13 +37,13 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       variants={cardVariants}
       initial="hidden"
       animate="visible"
-      className="group"
+      className="group h-full"
     >
-      <div className="bg-white border border-hairline-border hover:border-champagne-gold transition-all duration-500 overflow-hidden">
+      <div className="h-full flex flex-col bg-white border border-hairline-border hover:border-champagne-gold transition-all duration-500 overflow-hidden">
         {/* Image Container */}
-        <div className="relative aspect-square overflow-hidden bg-surface">
+        <div className="relative aspect-square overflow-hidden bg-surface flex-shrink-0">
           <motion.div
-            className="w-full h-full"
+            className="absolute inset-0"
             whileHover={{ scale: images ? 1 : 1.04 }}
             transition={{ duration: 0.7 }}
           >
