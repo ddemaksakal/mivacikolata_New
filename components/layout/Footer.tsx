@@ -1,11 +1,23 @@
+'use client';
+
 import React from 'react';
 import { BRAND, NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { lang } = useLang();
+  const t = translations[lang].footer;
+  const navLabels: Record<string, string> = {
+    '/': translations[lang].nav.home,
+    '/urunler': translations[lang].nav.collections,
+    '/vizyon-misyon': translations[lang].nav.visionMission,
+    '/iletisim': translations[lang].nav.contact,
+  };
 
   return (
-    <footer className="bg-chocolate-900 text-cream-50 mt-5xl">
+    <footer className="bg-latte text-cream-50 mt-5xl">
       {/* Main Footer */}
       <div className="container-luxury py-4xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3xl mb-3xl">
@@ -20,7 +32,7 @@ export function Footer() {
           {/* Navigation */}
           <div className="space-y-lg">
             <h4 className="font-serif text-lg font-semibold text-gold-300">
-              Navigation
+              {t.navigation}
             </h4>
             <ul className="space-y-sm">
               {NAV_LINKS.map((link) => (
@@ -29,7 +41,7 @@ export function Footer() {
                     href={link.href}
                     className="text-cream-100 hover:text-gold-400 transition-colors duration-200 text-sm"
                   >
-                    {link.label}
+                    {navLabels[link.href] ?? link.label}
                   </a>
                 </li>
               ))}
@@ -39,7 +51,7 @@ export function Footer() {
           {/* Social */}
           <div className="space-y-lg">
             <h4 className="font-serif text-lg font-semibold text-gold-300">
-              Follow Us
+              {t.followUs}
             </h4>
             <div className="flex gap-md">
               {SOCIAL_LINKS.map((link) => (
@@ -63,7 +75,7 @@ export function Footer() {
       {/* Bottom Footer */}
       <div className="container-luxury py-lg text-center">
         <p className="text-cream-100 text-sm">
-          © {currentYear} {BRAND.name}. All rights reserved.
+          © {currentYear} {BRAND.name}. {t.rights}
         </p>
       </div>
     </footer>

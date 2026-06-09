@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 type ContactType = 'general' | 'order';
 
@@ -29,6 +31,8 @@ const inputClass =
 
 export function ContactForm() {
   const [contactType, setContactType] = useState<ContactType>('general');
+  const { lang } = useLang();
+  const t = translations[lang].contact;
 
   return (
     <motion.div
@@ -59,7 +63,7 @@ export function ContactForm() {
                 paddingBottom: '1px',
               }}
             >
-              {type === 'order' ? 'ÖZEL SİPARİŞ' : 'GENEL DESTEK'}
+              {type === 'order' ? t.formOrderTab : t.formSupportTab}
             </button>
           </span>
         ))}
@@ -83,11 +87,11 @@ export function ContactForm() {
             className={labelClass}
             style={{ fontSize: '10px', color: '#9CA3AF' }}
           >
-            İSİM / NAME
+            {t.nameLabel}
           </label>
           <input
             type="text"
-            placeholder="Adınız"
+            placeholder={t.namePlaceholder}
             className={inputClass}
             style={{
               borderBottomColor: '#D4C5B5',
@@ -112,11 +116,11 @@ export function ContactForm() {
             className={labelClass}
             style={{ fontSize: '10px', color: '#9CA3AF' }}
           >
-            E-POSTA / EMAIL ADDRESS
+            {t.emailLabel}
           </label>
           <input
             type="email"
-            placeholder="E-posta adresiniz"
+            placeholder={t.emailPlaceholder}
             className={inputClass}
             style={{
               borderBottomColor: '#D4C5B5',
@@ -141,10 +145,10 @@ export function ContactForm() {
             className={labelClass}
             style={{ fontSize: '10px', color: '#9CA3AF' }}
           >
-            MESAJINIZ / MESSAGE
+            {t.messageLabel}
           </label>
           <textarea
-            placeholder="Mesajınızı buraya yazın..."
+            placeholder={t.messagePlaceholder}
             rows={4}
             className={`${inputClass} resize-none`}
             style={{
@@ -176,7 +180,7 @@ export function ContactForm() {
           onMouseEnter={(e) => (e.currentTarget.style.background = '#C9A84C')}
           onMouseLeave={(e) => (e.currentTarget.style.background = '#1C0F0A')}
         >
-          GÖNDER / SEND
+          {t.send}
         </motion.button>
       </div>
     </motion.div>

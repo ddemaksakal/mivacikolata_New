@@ -4,8 +4,12 @@ import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function CraftsmanshipSection() {
+  const { lang } = useLang();
+  const t = translations[lang].craftmanship;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
@@ -73,7 +77,7 @@ export function CraftsmanshipSection() {
             variants={itemVariants}
             className="text-4xl sm:text-5xl md:text-5xl font-serif font-light text-chocolate-950 mb-xl sm:mb-2xl tracking-wide"
           >
-            Mirasmız ve Zanaat
+            {t.title}
           </motion.h2>
 
           {/* Decorative line */}
@@ -90,7 +94,7 @@ export function CraftsmanshipSection() {
             className="space-y-lg mb-2xl sm:mb-3xl"
           >
             <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-gold-400 leading-relaxed">
-              "30 yıllık deneyimin mirasını her ürünümüzde yaşatıyoruz."
+              {t.quote}
             </p>
           </motion.blockquote>
 
@@ -99,20 +103,9 @@ export function CraftsmanshipSection() {
             variants={itemVariants}
             className="space-y-md sm:space-y-lg text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg font-sans"
           >
-            <p>
-              1993 yılında İKBAL PAZARLAMA adıyla başlayan yolculuğumuz, dürüstlük ve ticaret ahlakı
-              ilkeleri üzerine inşa edilmiştir. Sektörün önde gelen markalarının bayiliğini üstlenerek
-              edindiğimiz derin bilgi birikimi, bugün her ürünümüzün temelini oluşturur.
-            </p>
-            <p>
-              2018'de MİVA ÇİKOLATA çatısı altında kendi markamız İKOLATA'yı hayata geçirdik.
-              30 yıllık tecrübemizle en kaliteli hammaddeleri titizlikle seçiyor, her üretim
-              adımında kalite ve tutku ile ilerliyoruz.
-            </p>
-            <p>
-              Çikolatayı yalnızca bir tatlı olarak değil, insanların özel anılarını tatlandıran
-              bir unsur olarak görüyoruz. Her ürünümüzde bu anlayışın izini taşıyoruz.
-            </p>
+            <p>{t.p1}</p>
+            <p>{t.p2}</p>
+            <p>{t.p3}</p>
           </motion.div>
 
           {/* CTA Link */}
@@ -121,7 +114,7 @@ export function CraftsmanshipSection() {
               href="/vizyon-misyon"
               className="inline-flex items-center gap-md font-serif font-light text-chocolate-900 hover:text-gold-400 transition-colors duration-300 text-base sm:text-lg group"
             >
-              HİKAYEMİZİ KEŞFET
+              {t.cta}
               <motion.svg
                 className="w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"

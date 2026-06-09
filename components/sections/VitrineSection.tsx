@@ -5,10 +5,14 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import { FEATURED_PRODUCTS } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function VitrineSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { lang } = useLang();
+  const t = translations[lang].vitrine;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +82,7 @@ export function VitrineSection() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2xl md:gap-3xl"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl md:gap-2xl max-w-5xl mx-auto"
         >
           {FEATURED_PRODUCTS.map((product) => (
             <motion.div
@@ -88,7 +92,7 @@ export function VitrineSection() {
             >
               {/* Product Image */}
               <div className="relative overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:shadow-2xl">
-                <div className="relative aspect-[3/4] overflow-hidden bg-cream-50">
+                <div className="relative aspect-[4/5] overflow-hidden bg-cream-50">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -147,7 +151,7 @@ export function VitrineSection() {
               size="lg"
               className="border-2 border-chocolate-900 text-chocolate-900 hover:bg-chocolate-900 hover:text-cream-50 font-sans uppercase tracking-wider"
             >
-              Tüm Ürünleri Gör
+              {t.cta}
             </Button>
           </a>
         </motion.div>

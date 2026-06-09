@@ -3,38 +3,21 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
-interface ProcessCard {
-  title: string;
-  description: string;
-  image: string;
-  alt: string;
-}
-
-const processCards: ProcessCard[] = [
-  {
-    title: 'Seçim',
-    description: 'Dünyanın en seçkin kakao çekirdeklerini titizlikle seçerek, sadece en kalitelileri kullanıyoruz.',
-    image: '/images/secim.png',
-    alt: 'Kakao Çekirdekleri Seçimi',
-  },
-  {
-    title: 'Hassasiyet',
-    description: 'Her adımda hassas kontrol ve ölçümlerle, mükemmel tadı ve dokuyu sağlıyor.',
-    image: '/images/hassasiyet.png',
-    alt: 'Hassas Harmanlama Süreci',
-  },
-  {
-    title: 'Harmanlama',
-    description: 'Geleneksel yöntemlerle özel harmanlanmış, eşsiz lezzet profilini yaratıyoruz.',
-    image: '/images/çikolataharmanlama.png',
-    alt: 'Çikolata Harmanlama',
-  },
+const cardImages = [
+  { image: '/images/secim.png', alt: 'Kakao Çekirdekleri Seçimi' },
+  { image: '/images/hassasiyet.png', alt: 'Hassas Harmanlama Süreci' },
+  { image: '/images/çikolataharmanlama.png', alt: 'Çikolata Harmanlama' },
 ];
 
 export function ProcessSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { lang } = useLang();
+  const t = translations[lang].mission;
+  const processCards = t.steps.map((s, i) => ({ ...s, ...cardImages[i] }));
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -106,7 +89,7 @@ export function ProcessSection() {
             variants={labelVariants}
             className="text-xs md:text-sm font-sans font-medium text-gold-400 uppercase tracking-widest"
           >
-            MİSYONUMUZ
+            {t.label}
           </motion.p>
 
           {/* Mission Text */}
@@ -114,11 +97,7 @@ export function ProcessSection() {
             variants={titleVariants}
             className="font-sans text-base md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto"
           >
-            Sektörde 30 yıllık tecrübemizle, kalite ve tutku ile ürettiğimiz çikolatalarla
-            müşterilerimize eşsiz bir deneyim sunmayı hedefliyoruz. Tecrübemiz, en kaliteli
-            hammadde kullanımına ve işçilikle işlenen üretim süreçlerine dayanıyor.
-            Çikolatayı sadece bir tatlı olarak değil, insanların özel anılarını tatlandıran
-            bir unsur olarak görüyoruz.
+            {t.body}
           </motion.p>
         </motion.div>
 

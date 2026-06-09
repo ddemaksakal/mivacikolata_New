@@ -3,32 +3,22 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-const ease = [0.25, 0.1, 0.25, 1] as const;
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
-const cards = [
-  {
-    title: 'Seçki',
-    description:
-      'Kullandığımız her hammadde, titiz bir seçim sürecinden geçerek sofistike bir lezzet profiline ulaşır.',
-    image: 'https://picsum.photos/seed/miva-mission-1/800/600',
-  },
-  {
-    title: 'Hassasiyet',
-    description:
-      'El işçiliği ve geleneksel teknikler, her Miva parçasını sınırlı sayıda üretilmiş bir başyapıta dönüştürür.',
-    image: 'https://picsum.photos/seed/miva-mission-2/800/600',
-  },
-  {
-    title: 'Karakter',
-    description:
-      'Etik tedarik zincirimiz ve çevre dostu üretim anlayışımızla geleceğe karşı sorumluluğumuzu koruyoruz.',
-    image: 'https://picsum.photos/seed/miva-mission-3/800/600',
-  },
+const ease = [0.25, 0.1, 0.25, 1] as const;
+const cardImages = [
+  'https://picsum.photos/seed/miva-mission-1/800/600',
+  'https://picsum.photos/seed/miva-mission-2/800/600',
+  'https://picsum.photos/seed/miva-mission-3/800/600',
 ];
 
 export function MissionSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const { lang } = useLang();
+  const t = translations[lang].missionSection;
+  const cards = t.cards.map((c, i) => ({ ...c, image: cardImages[i] }));
 
   return (
     <section ref={ref} className="bg-cream-50 py-24 md:py-32">
@@ -44,13 +34,13 @@ export function MissionSection() {
             className="font-sans font-medium uppercase text-gold-400 tracking-[3px] mb-4"
             style={{ fontSize: '10px' }}
           >
-            MİSYONUMUZ
+            {t.label}
           </p>
           <h2
             className="font-serif"
             style={{ fontSize: '42px', color: '#2C1810', fontWeight: 400 }}
           >
-            Teknik Hassasiyet &amp; Etik Kaynak
+            {t.title}
           </h2>
         </motion.div>
 

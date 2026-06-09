@@ -1,27 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
-const blocks = [
-  {
-    label: 'ÖZEL SİPARİŞLER',
-    title: 'Bespoke Inquiries',
-    description:
-      'Kurumsal siparişler, özel tasarım kutular veya atölye işbirlikleri için doğrudan bize ulaşın.',
-    email: 'bespoke@mivacikolata.com',
-  },
-  {
-    label: 'GENEL DESTEK',
-    title: 'General Support',
-    description:
-      'Ürünlerimiz, teslimat seçenekleri veya genel sorularınız için destek ekibimize yazabilirsiniz.',
-    email: 'hello@mivacikolata.com',
-  },
-];
-
 export function ContactInfo() {
+  const { lang } = useLang();
+  const t = translations[lang].contact;
+  const blocks = [
+    { label: t.specialLabel, title: t.specialTitle, description: t.specialDesc, email: 'bespoke@mivacikolata.com' },
+    { label: t.generalLabel, title: t.generalTitle, description: t.generalDesc, email: 'hello@mivacikolata.com' },
+  ];
   return (
     <div className="flex flex-col">
       {blocks.map((block, i) => (

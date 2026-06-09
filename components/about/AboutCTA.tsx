@@ -3,9 +3,14 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
+
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export function AboutCTA() {
+  const { lang } = useLang();
+  const t = translations[lang].aboutCta;
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -23,7 +28,7 @@ export function AboutCTA() {
             className="font-serif italic font-light text-cream-50 leading-snug"
             style={{ fontSize: '36px' }}
           >
-            "Sade ama kusursuz, sert ama eriyen."
+            {t.quote}
           </blockquote>
 
           {/* Gold divider */}
@@ -34,7 +39,7 @@ export function AboutCTA() {
             className="font-sans uppercase tracking-[2px]"
             style={{ fontSize: '12px', color: 'rgba(201,168,76,0.7)' }}
           >
-            — Miva Atölye Şefi
+            {t.attribution}
           </p>
         </motion.div>
       </div>

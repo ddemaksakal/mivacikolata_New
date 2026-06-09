@@ -5,8 +5,12 @@ import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/Button';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function HeroSection() {
+  const { lang } = useLang();
+  const t = translations[lang];
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -122,7 +126,7 @@ export function HeroSection() {
             variants={itemVariants}
             className="text-xs sm:text-sm font-sans font-medium text-gold-400 uppercase tracking-widest"
           >
-            The Art of the Bean
+            {t.hero.label}
           </motion.p>
 
           {/* Main Heading */}
@@ -130,9 +134,9 @@ export function HeroSection() {
             variants={itemVariants}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-light leading-tight text-chocolate-950"
           >
-            Çikolatanın
+            {t.hero.heading1}
             <br />
-            Sanatı
+            {t.hero.heading2}
           </motion.h1>
 
           {/* Description */}
@@ -140,7 +144,7 @@ export function HeroSection() {
             variants={itemVariants}
             className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-md font-sans"
           >
-            Geleneksel yöntemlerle hazırlanmış, en kaliteli kakao çekirdeklerinden oluşan premium çikolatalar. Her dilim, sanat ve tutkunun bir yansıması.
+            {t.hero.description}
           </motion.p>
 
           {/* CTA Button */}
@@ -151,7 +155,7 @@ export function HeroSection() {
                 size="lg"
                 className="bg-chocolate-900 border-2 border-gold-400 text-cream-50 hover:bg-gold-400 hover:text-chocolate-950 transition-all duration-300"
               >
-                KOLEKSİYONU KEŞFEDİN
+                {t.hero.cta}
               </Button>
             </Link>
           </motion.div>
@@ -278,31 +282,6 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-xs text-gold-400 font-sans uppercase tracking-widest">
-            Scroll Edin
-          </p>
-          <svg
-            className="w-5 h-5 text-gold-400"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-        </div>
-      </motion.div>
     </section>
   );
 }

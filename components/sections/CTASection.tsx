@@ -4,10 +4,14 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { Button } from '@/components/ui/Button';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function CTASection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const { lang } = useLang();
+  const t = translations[lang].cta;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,14 +46,14 @@ export function CTASection() {
           className="text-center max-w-3xl mx-auto"
         >
           <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-serif font-light text-cream-50 tracking-wider mb-lg">
-            Premium Ürünler
+            {t.title}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
             className="text-lg font-sans text-cream-100 mb-3xl leading-relaxed"
           >
-            Profesyonel çikolata yapımcılarıyla ortaklık yapmaya hazır mısınız?
+            {t.subtitle}
           </motion.p>
 
           <motion.div variants={itemVariants}>
@@ -59,7 +63,7 @@ export function CTASection() {
                 size="lg"
                 className="border-2 border-cream-50 text-cream-50 hover:bg-cream-50 hover:text-chocolate-950 font-sans uppercase tracking-wider"
               >
-                Ürünleri İncele
+                {t.button}
               </Button>
             </Link>
           </motion.div>

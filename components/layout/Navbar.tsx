@@ -2,13 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BRAND, NAV_LINKS } from '@/lib/constants';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState<string>('');
+  const { lang, setLang } = useLang();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,6 +82,14 @@ export function Navbar() {
     }),
   };
 
+  const t = translations[lang];
+  const navLabels: Record<string, string> = {
+    '/': t.nav.home,
+    '/urunler': t.nav.collections,
+    '/vizyon-misyon': t.nav.visionMission,
+    '/iletisim': t.nav.contact,
+  };
+
   return (
     <motion.nav
       initial="hidden"
@@ -85,26 +97,34 @@ export function Navbar() {
       variants={navbarVariants}
       className={`sticky top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-cream-50 shadow-md backdrop-blur-sm bg-opacity-95'
-          : 'bg-cream-50 border-b border-gray-200'
+          ? 'bg-[#E8D5BF] shadow-md backdrop-blur-sm bg-opacity-95'
+          : 'bg-[#E8D5BF] border-b border-gray-200'
       }`}
     >
-      <div className="container-luxury py-lg flex items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          className="flex-shrink-0"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.3 }}
-        >
-          <Link href="/">
-            <h1 className="text-xl font-serif font-semibold text-chocolate-900 tracking-widest cursor-pointer">
-              {BRAND.name}
-            </h1>
-          </Link>
-        </motion.div>
+      <div className="container-luxury py-sm grid grid-cols-3 items-center">
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-3xl">
+        {/* Col 1 – Left: Logo + left divider */}
+        <div className="flex items-center gap-xl">
+          <Link href="/" className="flex-shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                src="/images/logo.png"
+                alt={BRAND.name}
+                width={100}
+                height={100}
+                className="rounded-full object-contain cursor-pointer"
+                priority
+              />
+            </motion.div>
+          </Link>
+          <div className="hidden lg:block h-10 w-px bg-gradient-to-b from-transparent via-gold-300 to-transparent" />
+        </div>
+
+        {/* Col 2 – Center: Desktop Navigation */}
+        <nav className="hidden lg:flex items-center justify-center gap-3xl">
           {NAV_LINKS.map((link, index) => (
             <motion.div
               key={link.href}
@@ -115,15 +135,12 @@ export function Navbar() {
             >
               <a
                 href={link.href}
-                onClick={() => {
-                  setActiveLink(link.href);
-                }}
-                className="text-xs font-sans font-normal text-charcoal uppercase tracking-wider transition-colors duration-300 hover:text-gold-400 py-sm"
+                onClick={() => setActiveLink(link.href)}
+                className="text-sm font-sans font-semibold text-charcoal uppercase tracking-wider whitespace-nowrap transition-all duration-200 hover:text-gold-400 hover:scale-110 inline-block py-sm"
               >
-                {link.label}
+                {navLabels[link.href] ?? link.label}
               </a>
 
-              {/* Animated underline */}
               <motion.div
                 className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-gold-400 to-gold-300"
                 initial={{ width: 0 }}
@@ -131,7 +148,6 @@ export function Navbar() {
                 transition={{ duration: 0.3 }}
               />
 
-              {/* Active indicator */}
               {activeLink === link.href && (
                 <motion.div
                   className="absolute bottom-0 left-0 h-0.5 bg-gold-400"
@@ -143,41 +159,60 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* Decorative line */}
-        <div className="hidden lg:block h-6 w-px bg-gradient-to-b from-transparent via-gold-300 to-transparent ml-2xl" />
+        {/* Col 3 – Right: language switcher + right divider + mobile button */}
+        <div className="flex items-center justify-end gap-xl">
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden flex flex-col gap-1.5 w-6 h-6 focus:outline-none relative"
-          aria-label="Toggle menu"
-          whileTap={{ scale: 0.95 }}
-        >
-          <motion.span
-            animate={{
-              rotate: isOpen ? 45 : 0,
-              y: isOpen ? 8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-            className="h-0.5 w-6 bg-charcoal block"
-          />
-          <motion.span
-            animate={{
-              opacity: isOpen ? 0 : 1,
-              scale: isOpen ? 0.8 : 1,
-            }}
-            transition={{ duration: 0.2 }}
-            className="h-0.5 w-6 bg-charcoal block"
-          />
-          <motion.span
-            animate={{
-              rotate: isOpen ? -45 : 0,
-              y: isOpen ? -8 : 0,
-            }}
-            transition={{ duration: 0.3 }}
-            className="h-0.5 w-6 bg-charcoal block"
-          />
-        </motion.button>
+          {/* Language Switcher */}
+          <div className="hidden lg:flex items-center gap-xs bg-white/50 border border-charcoal/10 rounded-full px-xs py-1 shadow-sm">
+            <button
+              onClick={() => setLang('tr')}
+              className={`flex items-center gap-xs px-sm py-xs rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-all duration-200 ${
+                lang === 'tr'
+                  ? 'bg-gold-400/25 text-gold-500 shadow-sm'
+                  : 'text-charcoal/50 hover:text-charcoal'
+              }`}
+            >
+              <span className="text-base leading-none">🇹🇷</span>
+              <span>TR</span>
+            </button>
+            <button
+              onClick={() => setLang('en')}
+              className={`flex items-center gap-xs px-sm py-xs rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-all duration-200 ${
+                lang === 'en'
+                  ? 'bg-gold-400/25 text-gold-500 shadow-sm'
+                  : 'text-charcoal/50 hover:text-charcoal'
+              }`}
+            >
+              <span className="text-base leading-none">🇬🇧</span>
+              <span>EN</span>
+            </button>
+          </div>
+
+          <div className="hidden lg:block h-10 w-px bg-gradient-to-b from-transparent via-gold-300 to-transparent" />
+
+          <motion.button
+            onClick={() => setIsOpen(!isOpen)}
+            className="lg:hidden flex flex-col gap-1.5 w-6 h-6 focus:outline-none relative text-charcoal"
+            aria-label="Toggle menu"
+            whileTap={{ scale: 0.95 }}
+          >
+            <motion.span
+              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="h-0.5 w-6 bg-charcoal block"
+            />
+            <motion.span
+              animate={{ opacity: isOpen ? 0 : 1, scale: isOpen ? 0.8 : 1 }}
+              transition={{ duration: 0.2 }}
+              className="h-0.5 w-6 bg-charcoal block"
+            />
+            <motion.span
+              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
+              transition={{ duration: 0.3 }}
+              className="h-0.5 w-6 bg-charcoal block"
+            />
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Navigation Drawer */}
@@ -245,7 +280,7 @@ export function Navbar() {
                     }}
                     className="text-sm font-sans font-normal text-charcoal uppercase tracking-wider py-md px-lg rounded-md transition-all duration-300 hover:bg-cream-100 hover:text-gold-400 border-b border-gray-100 last:border-b-0"
                   >
-                    {link.label}
+                    {navLabels[link.href] ?? link.label}
                   </motion.a>
                 ))}
               </nav>

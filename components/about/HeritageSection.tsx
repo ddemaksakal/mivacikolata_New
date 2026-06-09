@@ -2,10 +2,14 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
 
 export function HeritageSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const { lang } = useLang();
+  const t = translations[lang].heritage;
 
   return (
     <section ref={ref} className="bg-white">
@@ -36,32 +40,16 @@ export function HeritageSection() {
               className="font-sans font-semibold uppercase text-champagne-gold"
               style={{ fontSize: '11px', letterSpacing: '3px' }}
             >
-              HİKAYEMİZ
+              {t.label}
             </p>
             <h2 className="font-serif text-4xl md:text-[40px] leading-tight text-espresso-structural">
-              30 Yılın Tatlı Hikayesi
+              {t.title}
             </h2>
             <div className="h-px w-12 bg-champagne-gold" />
-            <p className="font-sans text-base text-gray-600 leading-relaxed">
-              1993 yılında "İKBAL PAZARLAMA" adı altında Hanifi Aksakal tarafından temelleri atılan MİVA Çikolata,
-              çikolata ve şekerleme sektöründe yıllar içinde benzersiz bir iz bırakmıştır. Bu büyülü yolculuk,
-              dürüstlük, ticaret ahlakı, zengin ürün bilgisi ve ürün tecrübesi ile taçlandırılmıştır.
-            </p>
-            <p className="font-sans text-base text-gray-600 leading-relaxed">
-              Kuruluş yıllarından itibaren çikolata ve şekerleme sektörünün öncü firmalarının bayiliğini
-              üstlenerek hızla büyüdük. Sektörün liderlerinin güvenini kazanarak kaliteyi ve müşteri
-              memnuniyetini her zaman önde tutmayı başardık.
-            </p>
-            <p className="font-sans text-base text-gray-600 leading-relaxed">
-              2018 yılında, geçmişimizden aldığımız güçle "MİVA ÇİKOLATA GIDA SAN. VE DIŞ TİC. LTD. ŞTİ."
-              olarak adım attık. Kendi markamız İKOLATA'yı oluştururken sektördeki 30 yıllık deneyimimizin
-              mirasını taşıdık. Her bir ürünümüzde bu deneyimin getirdiği zenginlik ve birikim bulunmaktadır.
-            </p>
-            <p className="font-sans text-base text-gray-600 leading-relaxed">
-              MİVA Çikolata'nın temel değerleri dürüstlük ve ticaret ahlakı üzerine inşa edilmiştir.
-              İçten gelen bir tutku ve dürüstlük anlayışı ile yolculuğumuza devam ederken, her bir tattan
-              damaklarınıza bırakacağımız izi taşıyacağımızı taahhüt ediyoruz.
-            </p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">{t.p1}</p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">{t.p2}</p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">{t.p3}</p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">{t.p4}</p>
           </motion.div>
         </div>
       </div>

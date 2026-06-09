@@ -3,11 +3,16 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
+import { useLang } from '@/contexts/LanguageContext';
+import { translations } from '@/lib/i18n';
+
 const ease = [0.25, 0.1, 0.25, 1] as const;
 
 export function VisionSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const { lang } = useLang();
+  const t = translations[lang].vision;
 
   return (
     <section ref={ref} className="bg-white py-24 md:py-32">
@@ -24,22 +29,19 @@ export function VisionSection() {
               className="font-sans font-medium uppercase text-gold-400 tracking-[3px]"
               style={{ fontSize: '10px' }}
             >
-              VİZYONUMUZ
+              {t.label}
             </p>
             <h2
               className="font-serif leading-tight"
               style={{ fontSize: '38px', color: '#2C1810', fontWeight: 400 }}
             >
-              Çikolatayı daha özel ve anlamlı hale getirmek
+              {t.title}
             </h2>
             <p
               className="font-sans leading-[1.8]"
               style={{ fontSize: '15px', color: '#6B7280' }}
             >
-              30 yıllık sektör deneyimi ile İKOLATA olarak, çikolatanın büyülü dünyasında
-              öncü bir rol oynamaya devam ediyoruz. Kaliteli hammadde ve benzersiz hizmet
-              anlayışımız sayesinde, çikolata deneyimini sadece lezzetli bir tat değil,
-              unutulmaz bir anı haline getiriyoruz.
+              {t.body}
             </p>
 
             {/* Italik alıntı — sol gold çizgi */}
@@ -48,8 +50,7 @@ export function VisionSection() {
                 className="font-serif italic"
                 style={{ fontSize: '18px', color: '#2C1810' }}
               >
-                "Amacımız, yılların getirdiği bilgi ve birikimle çikolatayı daha da
-                özel ve anlamlı hale getirmek."
+                {t.quote}
               </p>
             </div>
           </motion.div>
