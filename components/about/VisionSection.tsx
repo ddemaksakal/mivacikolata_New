@@ -30,14 +30,16 @@ export function VisionSection() {
               className="font-serif leading-tight"
               style={{ fontSize: '38px', color: '#2C1810', fontWeight: 400 }}
             >
-              Çikolatayı bir sanat formuna dönüştürmek
+              Çikolatayı daha özel ve anlamlı hale getirmek
             </h2>
             <p
               className="font-sans leading-[1.8]"
               style={{ fontSize: '15px', color: '#6B7280' }}
             >
-              Dünyanın en seçkin kakao bölgelerinden ilham alarak ürettiğimiz her
-              parça, estetiği lezzetle buluşturan bir tasarım felsefesinin ürünüdür.
+              30 yıllık sektör deneyimi ile İKOLATA olarak, çikolatanın büyülü dünyasında
+              öncü bir rol oynamaya devam ediyoruz. Kaliteli hammadde ve benzersiz hizmet
+              anlayışımız sayesinde, çikolata deneyimini sadece lezzetli bir tat değil,
+              unutulmaz bir anı haline getiriyoruz.
             </p>
 
             {/* Italik alıntı — sol gold çizgi */}
@@ -46,8 +48,8 @@ export function VisionSection() {
                 className="font-serif italic"
                 style={{ fontSize: '18px', color: '#2C1810' }}
               >
-                "Çikolatayı bir sanat formuna dönüştürmek; her kareyi bir deneyime,
-                her tadımı bir anıya çevirmek."
+                "Amacımız, yılların getirdiği bilgi ve birikimle çikolatayı daha da
+                özel ve anlamlı hale getirmek."
               </p>
             </div>
           </motion.div>

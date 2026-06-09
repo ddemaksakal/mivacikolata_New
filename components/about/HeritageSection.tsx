@@ -39,17 +39,28 @@ export function HeritageSection() {
               HİKAYEMİZ
             </p>
             <h2 className="font-serif text-4xl md:text-[40px] leading-tight text-espresso-structural">
-              Çikolatanın Alşimisi
+              30 Yılın Tatlı Hikayesi
             </h2>
             <div className="h-px w-12 bg-champagne-gold" />
             <p className="font-sans text-base text-gray-600 leading-relaxed">
-              Miva Çikolata, disiplinli bir mimar estetiği ve usta zanaatkarlığı
-              bir araya getirerek çikolatayı sadece bir tatlı değil, duyusal bir
-              heykel olarak yeniden tanımlar.
+              1993 yılında "İKBAL PAZARLAMA" adı altında Hanifi Aksakal tarafından temelleri atılan MİVA Çikolata,
+              çikolata ve şekerleme sektöründe yıllar içinde benzersiz bir iz bırakmıştır. Bu büyülü yolculuk,
+              dürüstlük, ticaret ahlakı, zengin ürün bilgisi ve ürün tecrübesi ile taçlandırılmıştır.
             </p>
             <p className="font-sans text-base text-gray-600 leading-relaxed">
-              Her bir Miva parçası, kökleri geleneksel tekniklere dayanan ancak
-              modern bir vizyonla şekillenen bir yolculuğun sonucudur.
+              Kuruluş yıllarından itibaren çikolata ve şekerleme sektörünün öncü firmalarının bayiliğini
+              üstlenerek hızla büyüdük. Sektörün liderlerinin güvenini kazanarak kaliteyi ve müşteri
+              memnuniyetini her zaman önde tutmayı başardık.
+            </p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">
+              2018 yılında, geçmişimizden aldığımız güçle "MİVA ÇİKOLATA GIDA SAN. VE DIŞ TİC. LTD. ŞTİ."
+              olarak adım attık. Kendi markamız İKOLATA'yı oluştururken sektördeki 30 yıllık deneyimimizin
+              mirasını taşıdık. Her bir ürünümüzde bu deneyimin getirdiği zenginlik ve birikim bulunmaktadır.
+            </p>
+            <p className="font-sans text-base text-gray-600 leading-relaxed">
+              MİVA Çikolata'nın temel değerleri dürüstlük ve ticaret ahlakı üzerine inşa edilmiştir.
+              İçten gelen bir tutku ve dürüstlük anlayışı ile yolculuğumuza devam ederken, her bir tattan
+              damaklarınıza bırakacağımız izi taşıyacağımızı taahhüt ediyoruz.
             </p>
           </motion.div>
         </div>

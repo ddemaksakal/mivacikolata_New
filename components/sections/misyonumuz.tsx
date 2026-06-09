@@ -109,16 +109,17 @@ export function ProcessSection() {
             MİSYONUMUZ
           </motion.p>
 
-          {/* Main Title */}
-          <motion.h2
+          {/* Mission Text */}
+          <motion.p
             variants={titleVariants}
-            className="text-4xl md:text-5xl font-serif font-light leading-tight text-chocolate-950"
-            style={{
-              letterSpacing: '6px',
-            }}
+            className="font-sans text-base md:text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto"
           >
-            TİTİZLİK, SABIR, MÜKEMMELLİK
-          </motion.h2>
+            Sektörde 30 yıllık tecrübemizle, kalite ve tutku ile ürettiğimiz çikolatalarla
+            müşterilerimize eşsiz bir deneyim sunmayı hedefliyoruz. Tecrübemiz, en kaliteli
+            hammadde kullanımına ve işçilikle işlenen üretim süreçlerine dayanıyor.
+            Çikolatayı sadece bir tatlı olarak değil, insanların özel anılarını tatlandıran
+            bir unsur olarak görüyoruz.
+          </motion.p>
         </motion.div>
 
         {/* Cards Grid */}

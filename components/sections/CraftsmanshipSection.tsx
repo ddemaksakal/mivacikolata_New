@@ -90,7 +90,7 @@ export function CraftsmanshipSection() {
             className="space-y-lg mb-2xl sm:mb-3xl"
           >
             <p className="text-lg sm:text-xl md:text-2xl font-serif italic text-gold-400 leading-relaxed">
-              "Gerçek lüks, mükemmelliğin peşinde geçen sonsuz saatlerin ürünüdür."
+              "30 yıllık deneyimin mirasını her ürünümüzde yaşatıyoruz."
             </p>
           </motion.blockquote>
 
@@ -100,13 +100,18 @@ export function CraftsmanshipSection() {
             className="space-y-md sm:space-y-lg text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-lg font-sans"
           >
             <p>
-              1950'lerden beri, Miva Çikolata ailesinin her üyesi, çikolata yapma sanatına kendini adanmıştır. Geleneksel yöntemlerimiz, modern inovasyonla buluşarak, her dilim çikolatayı bir başyapıta dönüştürür.
+              1993 yılında İKBAL PAZARLAMA adıyla başlayan yolculuğumuz, dürüstlük ve ticaret ahlakı
+              ilkeleri üzerine inşa edilmiştir. Sektörün önde gelen markalarının bayiliğini üstlenerek
+              edindiğimiz derin bilgi birikimi, bugün her ürünümüzün temelini oluşturur.
             </p>
             <p>
-              En kaliteli kakao çekirdeklerini dünyadan seçerek, el işçiliğiyle işleyerek, her ürün özgün bir lezzet ve doku ile beraber gelir. Zanaat bizim için sadece bir meslek değil, bir tutkunun ifadesidir.
+              2018'de MİVA ÇİKOLATA çatısı altında kendi markamız İKOLATA'yı hayata geçirdik.
+              30 yıllık tecrübemizle en kaliteli hammaddeleri titizlikle seçiyor, her üretim
+              adımında kalite ve tutku ile ilerliyoruz.
             </p>
             <p>
-              Siz her dilimi ağzınıza koyduğunuzda, geçmiş kuşakların çabalarını, bugünün bilgisini ve geleceğin umudunu tadacaksınız.
+              Çikolatayı yalnızca bir tatlı olarak değil, insanların özel anılarını tatlandıran
+              bir unsur olarak görüyoruz. Her ürünümüzde bu anlayışın izini taşıyoruz.
             </p>
           </motion.div>
 
