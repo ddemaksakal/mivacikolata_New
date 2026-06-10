@@ -2,7 +2,7 @@ export const translations = {
   tr: {
     nav: {
       home: 'ANASAYFA',
-      collections: 'KOLEKSİYONLAR',
+      collections: 'ÜRÜNLERİMİZ',
       visionMission: 'VİZYON & MİSYON',
       contact: 'İLETİŞİM',
     },

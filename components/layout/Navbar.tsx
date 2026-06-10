@@ -103,7 +103,7 @@ export function Navbar() {
     >
       <div className="container-luxury py-sm grid grid-cols-3 items-center">
 
-        {/* Col 1 – Left: Logo + left divider */}
+        {/* Col 1 – Left: Logo + divider */}
         <div className="flex items-center gap-xl">
           <Link href="/" className="flex-shrink-0">
             <motion.div
@@ -111,11 +111,11 @@ export function Navbar() {
               transition={{ duration: 0.3 }}
             >
               <Image
-                src="/images/logo.png"
+                src="/images/mivalogo-nobg.png"
                 alt={BRAND.name}
-                width={100}
-                height={100}
-                className="rounded-full object-contain cursor-pointer"
+                width={165}
+                height={110}
+                className="object-contain cursor-pointer"
                 priority
               />
             </motion.div>
@@ -189,6 +189,22 @@ export function Navbar() {
           </div>
 
           <div className="hidden lg:block h-10 w-px bg-gradient-to-b from-transparent via-gold-300 to-transparent" />
+
+          <Link href="/vizyon-misyon#miras-ve-zanaat" className="flex-shrink-0">
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Image
+                src="/images/logo.png"
+                alt={BRAND.name}
+                width={100}
+                height={100}
+                className="rounded-full object-contain cursor-pointer"
+                priority
+              />
+            </motion.div>
+          </Link>
 
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
